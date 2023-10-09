@@ -23,71 +23,74 @@ function getBurned(items, result, player)
 		itemType=item:getType();
 		if item:isEquipped() then 
 
-			if itemType == "HCFiresuit" then bodyProtection[1]=200;
+			if itemType == "HCFiresuit" then 
+				bodyProtection[1]=200;
 				break
 			end
-
-			if itemType == "HCWorkgloves"				then bodyProtection[1]=15;bodyProtection[2]=15;
+			-- hands (start from mittens as they can't be worn atm)
+			if itemType == "HCOvenmitts"				then bodyProtection[1]=25;bodyProtection[2]=25;
+			elseif itemType == "HCWorkgloves"			then bodyProtection[1]=15;bodyProtection[2]=15;
 			elseif itemType == "HCGlovesHardLeather"	then bodyProtection[1]=20;bodyProtection[2]=20;
-			elseif itemType == "HCOvenmitts"			then bodyProtection[1]=25;bodyProtection[2]=25;
-			elseif itemType == "Jacket_Fireman"			then bodyProtection[3]=10;bodyProtection[4]=10;bodyProtection[5]=bodyProtection[5]+10;
-			elseif itemType == "HCBlacksmithapron"		then bodyProtection[5]=bodyProtection[5]+15;
-			elseif itemType == "Hat_Fireman" 			then bodyProtection[6]=bodyProtection[6]+10;
+			end
+			-- body (both allowed)
+			if itemType == "Jacket_Fireman"				then bodyProtection[3]=10;bodyProtection[4]=10;bodyProtection[5]=bodyProtection[5]+10; end;
+			if itemType == "HCBlacksmithapron"			then bodyProtection[5]=bodyProtection[5]+15; end;
+			-- head
+			if itemType == "Hat_Fireman" 			then bodyProtection[6]=bodyProtection[6]+10;
 			elseif itemType == "WeldingMask" 			then bodyProtection[6]=bodyProtection[6]+10;
 			elseif itemType == "Glasses_SafetyGoggles" 	then bodyProtection[6]=bodyProtection[6]+5;
-			end --chk clothing item
+			end
 
 		end -- is equiped?
 	end -- loop
 
-
-	if HCNearKiln(player) 							then burnPower=10;
-	elseif containsItem ("HCSmelter2",items) 		then burnPower=40;
-	elseif containsItem ("HCBlastfurnace2",items) 	then burnPower=70;
-	elseif containsItem ("HCFurnace2",items) 		then burnPower=100;
-	end
-	
-	if(SandboxVars.Hydrocraft.BurnDamage ~= nil) then
-		if(SandboxVars.Hydrocraft.BurnDamage == 2) then --50%
-			burnPower = burnPower / 2
-		elseif(SandboxVars.Hydrocraft.BurnDamage == 3) then --None
-			burnPower = -100
+	if bodyProtection[1] < 200 then -- imunity (firesuit)
+		if HCNearKiln(player) 							then burnPower=10;
+		elseif containsItem ("HCSmelter2",items) 		then burnPower=40;
+		elseif containsItem ("HCBlastfurnace2",items) 	then burnPower=70;
+		elseif containsItem ("HCFurnace2",items) 		then burnPower=100;
 		end
-	end
-
-	--print ("Burnpower before proffesion/trait/random: " .. burnPower);
-
-	if player:getTraits():contains('Lucky') then
-		burnPower = burnPower - ZombRand(10);
-	else
-		burnPower = burnPower + ZombRand(15); 
-	end
-
-	if player:getDescriptor():getProfession() == "fireofficer" then burnPower = burnPower - 30;end
-	if player:getDescriptor():getProfession() == "metalworker" then burnPower = burnPower - 30;end
-
-	--print ("Burnpower after proffesion/trait/random: " .. burnPower);
-	if burnPower >= 100 then burnPower = 100;end
-	--print ("Burnpower - start" .. burnPower);
-
-
-	for count, bodyPart in ipairs(bodyParts) do
-
-		burnPower=burnPower-bodyProtection[count] - ZombRand(10);
-	--print("Protection:" .. bodyProtection[count]," Burnpower:  " .. burnPower)
-
-
-		if (burnPower > 0) then
-		bodyPart:AddDamage(burnPower);
-		bodyPart:setBurned();
-		player:getBodyDamage():SetBandaged(bodyPart:getIndex(), false, 0, false, nil);
-
-		player:Say("Ouch, that burns!");
-		player:getCurrentSquare():playSound("PZ_Fire", false);
-
+		
+		if(SandboxVars.Hydrocraft.BurnDamage ~= nil) then
+			if(SandboxVars.Hydrocraft.BurnDamage == 2) then --50%
+				burnPower = burnPower / 2
+			elseif(SandboxVars.Hydrocraft.BurnDamage == 3) then --None
+				burnPower = -100
+			end
 		end
 
-	end
+		--print ("Burnpower before proffesion/trait/random: " .. burnPower);
+
+		if player:getTraits():contains('Lucky') then
+			burnPower = burnPower - ZombRand(10);
+		else
+			burnPower = burnPower + ZombRand(15); 
+		end
+
+		if player:getDescriptor():getProfession() == "fireofficer" then burnPower = burnPower - 30;end
+		if player:getDescriptor():getProfession() == "metalworker" then burnPower = burnPower - 30;end
+
+		--print ("Burnpower after proffesion/trait/random: " .. burnPower);
+		if burnPower >= 100 then burnPower = 100;end
+		--print ("Burnpower - start" .. burnPower);
+
+
+		for count, bodyPart in ipairs(bodyParts) do
+
+			burnPower=burnPower-bodyProtection[count] - ZombRand(10);
+		--print("Protection:" .. bodyProtection[count]," Burnpower:  " .. burnPower)
+
+
+			if (burnPower > 0) then
+				bodyPart:AddDamage(burnPower);
+				bodyPart:setBurned();
+				player:getBodyDamage():SetBandaged(bodyPart:getIndex(), false, 0, false, nil);
+
+				player:Say("Ouch, that burns!");
+				player:getCurrentSquare():playSound("PZ_Fire", false);
+			end
+		end
+	end -- imunity (fire suit)
 end -- funtion
 
 
@@ -109,72 +112,78 @@ local function GenericBurn(items, result, player, burnPower)
 		local item=inv:get(i)
 		if item:isEquipped() then 
 			local type = item:getType()
-			if itemType == "HCFiresuit" then bodyProtection[1]=200;
+			if itemType == "HCFiresuit" then 
+				bodyProtection[1]=200;
 				break
 			end
-
-			if itemType == "HCWorkgloves"				then bodyProtection[1]=15;bodyProtection[2]=15;
+			-- hands (start from mittens as they can't be worn atm)
+			if itemType == "HCOvenmitts"				then bodyProtection[1]=25;bodyProtection[2]=25;
+			elseif itemType == "HCWorkgloves"			then bodyProtection[1]=15;bodyProtection[2]=15;
 			elseif itemType == "HCGlovesHardLeather"	then bodyProtection[1]=20;bodyProtection[2]=20;
-			elseif itemType == "Jacket_Fireman"			then bodyProtection[3]=10;bodyProtection[4]=10;bodyProtection[5]=bodyProtection[5]+10;
-			elseif itemType == "HCBlacksmithapron"		then bodyProtection[5]=bodyProtection[5]+15;
-			elseif itemType == "Hat_Fireman" 			then bodyProtection[6]=bodyProtection[6]+10;
+			end
+			-- body (both allowed)
+			if itemType == "Jacket_Fireman"				then bodyProtection[3]=10;bodyProtection[4]=10;bodyProtection[5]=bodyProtection[5]+10; end;
+			if itemType == "HCBlacksmithapron"			then bodyProtection[5]=bodyProtection[5]+15; end;
+			-- head
+			if itemType == "Hat_Fireman" 			then bodyProtection[6]=bodyProtection[6]+10;
 			elseif itemType == "WeldingMask" 			then bodyProtection[6]=bodyProtection[6]+10;
 			elseif itemType == "Glasses_SafetyGoggles" 	then bodyProtection[6]=bodyProtection[6]+5;
-			end --chk clothing item
+			end
 
 		end -- is equiped?
 	end -- loop
 
-	--print ("Burnpower before proffesion/trait/random: " .. burnPower);
+	if bodyProtection[1] < 200 then -- imunity (firesuit)
+		--print ("Burnpower before proffesion/trait/random: " .. burnPower);
 
-	if player:getTraits():contains('Lucky') then
-		burnPower = burnPower - ZombRand(10);
-	else
-		burnPower = burnPower + ZombRand(15); 
-	end
-
-	local profession = player:getDescriptor():getProfession()
-	if profession == "fireofficer" or profession == "metalworker" then
-		burnPower = burnPower - 30
-	end
-
-	--print ("Burnpower after proffesion/trait/random: " .. burnPower);
-	if burnPower > 100 then
-		burnPower = 100
-	end
-	--print ("Burnpower - start" .. burnPower);
-
-	if burnPower <= 0 then
-		return
-	end
-
-	--Sandbox values: 1 = full, 2 = 50%, 3 = None
-	if(SandboxVars.Hydrocraft.BurnDamage ~= nil) then
-		if(SandboxVars.Hydrocraft.BurnDamage == 2) then --50%
-			burnPower = burnPower / 2
-		elseif(SandboxVars.Hydrocraft.BurnDamage == 3) then --None
-			burnPower = -100
-		end
-	end
-
-	for count, bodyPart in ipairs(bodyParts) do
-
-		burnPower=burnPower-bodyProtection[count] - ZombRand(10);
-		--print("Protection:" .. bodyProtection[count]," Burnpower:  " .. burnPower)
-
-
-		if (burnPower > 0) then
-		bodyPart:AddDamage(burnPower);
-		bodyPart:setBurned();
-		player:getBodyDamage():SetBandaged(bodyPart:getIndex(), false, 0, false, nil);
-
-		player:Say("Ouch, that burns!");
-		player:getCurrentSquare():playSound("PZ_Fire", false);
-
+		if player:getTraits():contains('Lucky') then
+			burnPower = burnPower - ZombRand(10);
+		else
+			burnPower = burnPower + ZombRand(15); 
 		end
 
-	end
+		local profession = player:getDescriptor():getProfession()
+		if profession == "fireofficer" or profession == "metalworker" then
+			burnPower = burnPower - 30
+		end
 
+		--print ("Burnpower after proffesion/trait/random: " .. burnPower);
+		if burnPower > 100 then
+			burnPower = 100
+		end
+		--print ("Burnpower - start" .. burnPower);
+
+		if burnPower <= 0 then
+			return
+		end
+
+		--Sandbox values: 1 = full, 2 = 50%, 3 = None
+		if(SandboxVars.Hydrocraft.BurnDamage ~= nil) then
+			if(SandboxVars.Hydrocraft.BurnDamage == 2) then --50%
+				burnPower = burnPower / 2
+			elseif(SandboxVars.Hydrocraft.BurnDamage == 3) then --None
+				burnPower = -100
+			end
+		end
+
+		for count, bodyPart in ipairs(bodyParts) do
+
+			burnPower=burnPower-bodyProtection[count] - ZombRand(10);
+			--print("Protection:" .. bodyProtection[count]," Burnpower:  " .. burnPower)
+
+
+			if (burnPower > 0) then
+			bodyPart:AddDamage(burnPower);
+			bodyPart:setBurned();
+			player:getBodyDamage():SetBandaged(bodyPart:getIndex(), false, 0, false, nil);
+
+			player:Say("Ouch, that burns!");
+			player:getCurrentSquare():playSound("PZ_Fire", false);
+
+			end
+
+		end
+	end
 end
 
 function KilnUse(items, result, player)

@@ -2185,5 +2185,16 @@ recipe Make Shield
     		Category:Armor,
     		OnGiveXP:Recipe.OnGiveXP.None,
 	}
+		
 */
+recipe Convert Oven Mitts (HC)
+	{
+		OvenMitt=1,
+		Result:HCOvenmitts,
+		Time:1.0,
+		Category:Armor,
+		OnGiveXP:Recipe.OnGiveXP.None,
+		CanBeDoneFromFloor:true,
+		NeedToBeLearn:false,
+	}
 }

@@ -339,5 +339,24 @@ recipe Recycle Iron
     OnCreate:getBurned,
     OnGiveXP:HCWelding_OnGiveXP,
     }
+	
+	recipe Recycle Iron
+    {
+    SkillRequired:MetalWelding=5,
+    ScrapMetal=4,
+    Charcoal,
+    [Recipe.GetItemTypes.StartFire],
+    HCIngotmold,
+    [Recipe.GetItemTypes.BlacksmithTongs],
+    keep [Recipe.GetItemTypes.LeatherGloves]/HCFiresuit,
+    keep HCSmelter2/HCFurnace2/HCBlastfurnace2,
+    CanBeDoneFromFloor:true,
+    Result:HCIroningot,
+    NeedToBeLearn:true,
+    Time:1000,
+    Category:Smithing,
+    OnCreate:getBurned,
+    OnGiveXP:HCWelding_OnGiveXP,
+    }
 
 }
