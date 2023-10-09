@@ -1,0 +1,3 @@
+/*Contents moved to /Hydrocraft/HC_Animals.txt*/
+/*This should resolve a conflict caused by other mods having a Animals.txt*/
+/*This file can be removed in a future release, just added to ensure the old version is replace with an empty file*/

@@ -1,0 +1,480 @@
+ module Hydrocraft
+{
+    imports
+    {
+        Base
+
+    }
+
+/************************ITEMS************************/
+
+item HCLavalamp
+    {
+        Weight    				 =    	1,
+        Type    				 =    	Normal,
+        DisplayName    			 =    	Lava Lamp,
+        Icon    				 =    	HCLavalamp,
+		DisplayCategory          =   	LightSource,
+		StaticModel 			 = 	  	HC_LavaLamp,
+		AttachmentType  		 = 		FlashlightBig,
+		WorldStaticModel 		 = 	  	WorldItem-HC_LavaLamp,		
+    }
+
+item HCLampshade
+    {
+        Weight    				 =    	0.1,
+        Type    				 =		Normal,
+        DisplayName    			 =    	Lamp Shade,
+        Icon    				 =    	HCLampshade,
+		DisplayCategory          =   	Misc,
+		WorldStaticModel 		 = 	  	WorldItem-HCLampshade,		
+    }
+
+item HCRoadflare
+    {
+		DisplayCategory          =    LightSource,
+        Type    				 =    Normal,		
+        Weight    				 =    1,
+        DisplayName    			 =    Road Flare,
+        Icon   		 			 =    HCRoadflare,
+        primaryAnimMask 		 = 	  HoldingUmbrellaRight,
+        secondaryAnimMask 		 = 	  HoldingUmbrellaLeft,		
+        StaticModel 			 = 	  HC_RoadFlare_AP,
+	    AttachmentType 			 = 	  Hammer,		
+		WorldStaticModel 		 = 	  WorldItem-HCRoadFlare,			
+    }
+
+item HCRoadflareon
+	{
+		DisplayCategory          =   LightSource,	
+		LightDistance	=	5,
+		Weight		=	1,
+		DisappearOnUse	=	TRUE,
+		Type		=	Drainable,
+		TorchCone	=	FALSE,
+		UseDelta	=	0.003,
+		LightStrength	=	0.4,
+		DisplayName	=	Road Flare,
+		ActivatedItem			 =	  TRUE,
+		Icon					 =	  HCRoadflareon,
+        primaryAnimMask 		 = 	  HoldingUmbrellaRight,
+        secondaryAnimMask 		 = 	  HoldingUmbrellaLeft,		
+        StaticModel 			 = 	  HC_RoadFlare_AP,
+	    AttachmentType 			 = 	  Hammer,			
+		WorldStaticModel 		 = 	  WorldItem-HCRoadFlare,		
+	}
+
+item HCLaserpointer
+    {
+        Weight   				 =    0.5,
+        Type    				 =    Normal,
+        DisplayName   			 =    Laser Pointer,
+        Icon    				 =    HCLaserpointer,
+		DisplayCategory          =    LightSource,
+    }
+
+
+item HCLaserpointeron
+	{
+		DisplayCategory          =   LightSource,	
+		Type					 =	 Drainable,	
+		DisplayName				 =	 Laser Pointer,		
+		Icon					 =	 HCLaserpointeron,	
+		Weight					 =	 0.5,		
+		LightDistance			 =	 30,
+		DisappearOnUse			 =	 FALSE,
+		TorchCone				 =	 TRUE,
+		UseDelta				 =	 0.0009,
+		LightStrength			 =	 0.2,
+		ActivatedItem			 =	 TRUE,
+	}
+
+item HCGlowstickred
+    {
+		DisplayCategory         =   LightSource,
+		Type					=   Normal,
+		DisplayName    			=   Red Glowstick,
+        Weight    				=   0.2,
+        Icon    				=   HCGlowstickred,
+        primaryAnimMask 		= 	HoldingUmbrellaRight,
+        secondaryAnimMask 		= 	HoldingUmbrellaLeft,
+		StaticModel 			= 	HC_GlowstickRedAZ,
+		AttachmentType 			= 	Hammer,			
+		WorldStaticModel 		= 	WorldItem-GlowstickRedAZ,
+    }
+
+
+item HCGlowstickredon
+	{
+		DisplayCategory          =  LightSource,
+		Type					 =	Drainable,
+		DisplayName				 =	Red Glowstick,
+		Icon					 =	HCGlowstickredon,
+		Weight					 =	0.2,
+		LightDistance			=	3,
+		DisappearOnUse			=	FALSE,
+		UseWhileUnequipped  	=   TRUE,		
+		UseDelta				=	0.002,
+		LightStrength			=	0.4,
+		ActivatedItem			=	TRUE,		
+        primaryAnimMask 		= 	HoldingUmbrellaRight,
+        secondaryAnimMask 		= 	HoldingUmbrellaLeft,
+		StaticModel 			= 	HC_GlowstickRedAZ,
+		AttachmentType 			= 	Hammer,	
+		WorldStaticModel 		= 	WorldItem-GlowstickRedAZ,	
+	}
+
+item HCGlowstickblue
+    {
+		DisplayCategory         =   LightSource,
+		Type    				=   Normal,
+		DisplayName    			=   Blue Glowstick,
+        Weight    				=   0.2,
+        Icon    				=   HCGlowstickblue,
+        primaryAnimMask 		= 	HoldingUmbrellaRight,
+        secondaryAnimMask 		= 	HoldingUmbrellaLeft,
+		StaticModel 			= 	HC_GlowstickBlueAZ,
+		AttachmentType 			= 	Hammer,			
+		WorldStaticModel 		= 	WorldItem-GlowstickBlueAZ,		
+    }
+
+
+item HCGlowstickblueon
+	{
+		DisplayCategory         =   LightSource,
+		Type					=	Drainable,
+		DisplayName				=	Blue Glowstick,	
+		Icon					=	HCGlowstickblueon,
+		Weight					=	0.2,
+		LightDistance			=	3,
+		DisappearOnUse			=	FALSE,
+		UseWhileUnequipped  	=   TRUE,		
+		UseDelta				=	0.002,
+		LightStrength			=	0.4,
+		ActivatedItem			=	TRUE,
+        primaryAnimMask 		= 	HoldingUmbrellaRight,
+        secondaryAnimMask 		= 	HoldingUmbrellaLeft,
+		StaticModel 			= 	HC_GlowstickBlueAZ,
+		AttachmentType 			= 	Hammer,	
+		WorldStaticModel 		= 	WorldItem-GlowstickBlueAZ,	
+	}
+
+item HCGlowstickgreen
+    {
+		DisplayCategory         =   LightSource,
+		Type    				=   Normal,
+		DisplayName    			=   Green Glowstick,
+        Weight    				=   0.2,
+        Icon    				=   HCGlowstickgreen,
+        primaryAnimMask 		= 	HoldingUmbrellaRight,
+        secondaryAnimMask 		= 	HoldingUmbrellaLeft,
+		StaticModel 			= 	HC_GlowstickGreenAZ,
+		AttachmentType 			= 	Hammer,	
+		WorldStaticModel 		= 	WorldItem-GlowstickGreenAZ,		
+    }
+
+
+item HCGlowstickgreenon
+	{
+		DisplayCategory         =   LightSource,
+		Type    				=   Normal,
+		DisplayName    			=   Green Glowstick,
+        Weight    				=   0.2,
+		Icon					=	HCGlowstickgreenon,
+		LightDistance			=	3,
+		DisappearOnUse			=	FALSE,
+		UseWhileUnequipped  	=   TRUE,		
+		UseDelta				=	0.002,
+		LightStrength			=	0.4,
+		ActivatedItem			=	TRUE,
+        primaryAnimMask 		= 	HoldingUmbrellaRight,
+        secondaryAnimMask 		= 	HoldingUmbrellaLeft,
+		StaticModel 			= 	HC_GlowstickGreenAZ,
+		AttachmentType 			= 	Hammer,	
+		WorldStaticModel 		= 	WorldItem-GlowstickGreenAZ,		
+	}
+
+item HCLighterempty
+	{
+		Weight			 =	0.05,
+		Type			 =	Normal,
+		DisplayName		 =	Empty Lighter,
+		Icon			 =	Lighter,
+		DisplayCategory	 =	Fuel,
+		StaticModel		 =	Zippo,
+		WorldStaticModel =	ZippoGround,
+	}
+	
+item HCLighterfluid
+    {
+		DisplayCategory     =   Fuel,
+		Type				= 	Drainable,
+		DisplayName         = 	Lighter Fluid,
+        Weight    			= 	0.2,
+		icon 				= 	HCLighterfluid,
+		UseWhileEquipped	= 	FALSE,
+		UseDelta			= 	0.25,
+       
+    }
+
+item HCFlashlightoff
+    {
+        Weight    		=    1.5,
+        Type    		=    Normal,
+        DisplayName    		=    Small Flashlight,
+        Icon   		 	=    HCFlashlightoff,
+		DisplayCategory          =   LightSource,
+    }
+
+
+item HCFlashlightdead
+    {
+        Weight    		=    1.5,
+        Type    		=    Normal,
+        DisplayName    		=    Dead Small Flashlight,
+        Icon   		 	=    HCFlashlightoff,
+		DisplayCategory          =   LightSource,
+    }
+
+item HCFlashlighton
+	{
+		LightDistance	    =	15,
+		Weight			    =	1.5,
+		ReplaceOnDeplete	=	HCFlashlightdead,
+		Type			    =	Drainable,
+		TorchCone		    =	FALSE,
+		UseDelta		    =	0.0009,
+		LightStrength		=	0.8,
+		DisplayName		    =	Small Flashlight with Power,
+		ActivatedItem		=	TRUE,
+		Icon			    =	HCFlashlighton,
+		DisplayCategory          =   LightSource,
+	}
+
+item HCFlashlightmk1off
+    {
+        Weight    		=    1.5,
+        Type    		=    Normal,
+        DisplayName    	=    Small Homemade Flashlight,
+        Icon   		 	=    HCFlashlightmk1off,
+		DisplayCategory          =   LightSource,
+    }
+
+
+item HCFlashlightmk1dead
+    {
+        Weight    		=    1.5,
+        Type    		=    Normal,
+        DisplayName    		=    Dead Small Homemade Flashlight,
+        Icon   		 	=    HCFlashlightmk1off,
+		DisplayCategory          =   LightSource,
+    }
+
+item HCFlashlightmk1on
+	{
+		LightDistance		=	4,
+		Weight	        	=	0.5,
+		ReplaceOnDeplete	=	HCFlashlightmk1dead,
+		Type	        	=	Drainable,
+		TorchCone		=	TRUE,
+		UseDelta		=	0.0009,
+		LightStrength		=	0.2,
+		DisplayName		=	Small Homemade Flashlight with Power,
+		ActivatedItem		=	TRUE,
+		Icon	        	=	HCFlashlightmk1on,
+		DisplayCategory          =   LightSource,
+	}
+
+item HCDynamoflashlightoff
+    {
+        Weight    		=    1.5,
+        Type    		=    Normal,
+        DisplayName    		=    Dynamo Flashlight,
+        Icon   		 	=    HCDynamoflashlightoff,
+		DisplayCategory          =   LightSource,
+    }
+
+item HCDynamoflashlightdead
+    {
+        Weight    		=    1.5,
+        Type    		=    Normal,
+        DisplayName    		=    Dead Dynamo Flashlight,
+        Icon   		 	=    HCDynamoflashlightoff,
+		DisplayCategory          =   LightSource,
+    }
+
+item HCDynamoflashlighton
+	{
+        LightDistance       = 7,
+        Weight              = 0.5,
+        DisappearOnUse      = FALSE,
+        Type                = Drainable,
+        TorchCone           = TRUE,
+        UseDelta            = 0.002,
+        LightStrength       = 0.7,
+        DisplayName         = Dynamo Flashlight with Power,
+        ActivatedItem       = TRUE,
+        Icon                = HCDynamoflashlighton,
+        MetalValue          = 10,
+        cantBeConsolided    = TRUE,
+        StaticModel         = HandTorch,
+        primaryAnimMask     = HoldingTorchRight,
+        secondaryAnimMask   = HoldingTorchLeft,
+        ReplaceOnDeplete    = HCDynamoflashlightdead,
+		DisplayCategory          =   LightSource,
+	}
+
+/************************RECIPES************************/
+    
+recipe Ignite Road Flare
+    {
+    HCRoadflare,
+    Result:HCRoadflareon,
+    Time:15,
+	StopOnWalk:false,
+    }
+
+recipe Turn on Laser Pointer
+    {
+    HCLaserpointer,
+    Result:HCLaserpointeron,
+    Time:15,
+	StopOnWalk:false,
+    }
+
+recipe Shake Red Glowstick
+    {
+    HCGlowstickred,
+    Result:HCGlowstickredon,
+    Time:15,
+	StopOnWalk:false,
+    }	
+
+recipe Shake Blue Glowstick
+    {
+    HCGlowstickblue,
+    Result:HCGlowstickblueon,
+    Time:15,
+	StopOnWalk:false,
+    }	
+
+recipe Shake Green Glowstick
+    {
+    HCGlowstickgreen,
+    Result:HCGlowstickgreenon,
+    Time:15,
+	StopOnWalk:false,
+    }	
+
+recipe Insert Battery
+    {
+    HCFlashlightoff,
+    HCBatterysmall,
+    Result:HCFlashlighton,
+    Time:15,
+    Category:Electrical,
+    }
+
+recipe Remove Battery
+    {
+    HCFlashlightdead,
+    Result:HCFlashlightoff,
+    Time:15,
+    Category:Electrical,
+    OnCreate:recipe_hcbatterysmalldead,
+    }
+
+recipe Refuel Lighter
+  	{
+   	HCLighterfluid,
+   	HCLighterempty,
+   	Result:Lighter,
+	Time:30.0,
+        Category:Engineer,
+  	}
+
+recipe Make Homemade Flashlight
+    {
+    	SkillRequired:Electricity=2,
+       	LightBulb,
+       	keep Screwdriver,
+       	RubberBand/Glue,
+       	destroy Battery,
+       	HCSwitch,
+       	HCCablecopper/HCCoppercablered/HCCoppercablestriped,
+       	keep HCElectornicsbench2,
+       	CanBeDoneFromFloor:true,
+       	Result:HCFlashlightmk1off,
+       	Time:100.0,
+       	Category:Electrical,
+    	OnGiveXP:HCElectricity_OnGiveXP,
+    }
+
+recipe Turn On Homemade Flashlight
+    {
+    	HCFlashlightmk1off,
+    	Result:HCFlashlightmk1on,
+    	Time:15,
+       	Category:Electrical,
+    }
+
+recipe Insert Battery
+    {
+    HCFlashlightmk1off,
+    HCBatterysmall,
+    Result:HCFlashlightmk1on,
+    Time:15,
+    Category:Electrical,
+    }
+
+recipe Remove Battery
+    {
+    HCFlashlightmk1dead,
+    Result:HCFlashlightmk1off,
+    Time:15,
+    Category:Electrical,
+    OnCreate:recipe_hcbatterysmalldead,
+    }
+
+recipe Make Dynamo Flashlight
+    {
+    	SkillRequired:Electricity=2,
+       	HCFlashlightmk1off,
+        HCDynamo,
+       	keep Screwdriver,
+       	keep HCElectornicsbench2,
+       	CanBeDoneFromFloor:true,
+       	Result:HCDynamoflashlightoff,
+       	Time:100.0,
+       	Category:Electrical,
+    	OnGiveXP:HCElectricity_OnGiveXP,
+    }
+
+recipe Turn On Dynamo Flashlight
+    {
+    	HCDynamoflashlightoff,
+    	Result:HCDynamoflashlighton,
+    	Time:15,
+       	Category:Electrical,
+    }
+
+recipe Rechnarge Dynamo Flashlight
+    {
+    	HCDynamoflashlightdead,
+    	Result:HCDynamoflashlightoff,
+    	Time:100,
+    	Category:Electrical,
+    	OnGiveXP:Recipe.OnGiveXP.None,
+    }
+
+recipe Make Lamp Shade
+    {
+    	SheetPaper2,
+    	Wire=4,
+    	Result:HCLampshade,
+    	Time:100,
+    	Category:Engineer,
+    	OnGiveXP:Recipe.OnGiveXP.None,
+    }
+	
+}

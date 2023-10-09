@@ -1,0 +1,50 @@
+module Hydrocraft
+{
+    imports
+    {
+        Base
+
+    }
+
+/************************RECIPES************************/
+
+recipe Recycle Lead
+    {
+    SkillRequired:MetalWelding=4,
+    HCAnvillead,
+    Charcoal,
+    [Recipe.GetItemTypes.StartFire],
+    HCIngotmold=18,
+    [Recipe.GetItemTypes.BlacksmithTongs],
+    keep [Recipe.GetItemTypes.LeatherGloves]/HCFiresuit,
+    keep HCSmelter2/HCFurnace2/HCBlastfurnace2,
+    CanBeDoneFromFloor:true,
+    Result:HCLeadingot=18,
+    NeedToBeLearn:true,
+    Time:1000,
+    Category:Smithing,
+    OnCreate:getBurned,
+    OnGiveXP:HCWelding_OnGiveXP,
+    }
+
+recipe Recycle Lead
+    {
+    SkillRequired:MetalWelding=4,
+    LeadPipe,
+    Charcoal,
+    [Recipe.GetItemTypes.StartFire],
+    HCIngotmold=1,
+    [Recipe.GetItemTypes.BlacksmithTongs],
+    keep [Recipe.GetItemTypes.LeatherGloves]/HCFiresuit,
+    keep HCSmelter2/HCFurnace2/HCBlastfurnace2,
+    CanBeDoneFromFloor:true,
+    Result:HCLeadingot=1,
+    NeedToBeLearn:true,
+    Time:1000,
+    Category:Smithing,
+    OnCreate:getBurned,
+    OnGiveXP:HCWelding_OnGiveXP,
+    }/*TODO: allow broken items?*/
+
+
+}

@@ -1,0 +1,165 @@
+module Hydrocraft
+{
+    imports
+    {
+        Base, farming
+
+    }
+
+/************************ITEMS************************/
+
+  item HCCompostbin
+    {
+    Weight        	= 20.0,
+    Type        	= Normal,
+    DisplayName    	= Compost Bin,
+    icon        	= HCCompostbin,
+	DisplayCategory	= SurFarm,
+    }
+
+  item HCCompost
+    {
+    Weight        	= 0.2,
+    Type        	= Normal,
+    DisplayName    	= Compost,
+    icon        	= HCCompost,
+	DisplayCategory	= SurFarm,
+    }
+
+  item HCComposter
+    {
+    Weight        	= 25.0,
+    Type        	= Normal,
+    DisplayName    	= Composter,
+    icon        	= HCComposter,
+	DisplayCategory	= SurFarm,
+    }
+
+  item HCComposter2
+    {
+    Weight        	= 25.0,
+    Type        	= Normal,
+    DisplayName    	= Spirulina Composter,
+    icon        	= HCComposter2,
+	DisplayCategory	= SurFarm,
+    }
+
+
+/************************RECIPES************************/	
+
+recipe Make Compost
+	{
+		keep HCCompostbin,
+		[Recipe.GetItemTypes.FoodThatCanRot]/[Recipe.GetItemTypes.Shit],
+		CanBeDoneFromFloor:true,
+		Result:HCCompost,
+		NeedToBeLearn:true,
+		Time:500,
+		Category:Farming,
+		OnGiveXP:HCFarming_OnGiveXP,
+	}
+
+recipe Make Compost
+	{
+		keep HCComposter,
+		[Recipe.GetItemTypes.FoodThatCanRot]/[Recipe.GetItemTypes.Shit],
+		CanBeDoneFromFloor:true,
+		Result:HCCompost,
+		NeedToBeLearn:true,
+		Time:50,
+		Category:Farming,
+		OnGiveXP:HCFarming_OnGiveXP,
+	}
+
+recipe Fill Bag With Compost
+    {
+    	HCCompost=10,
+    	EmptySandbag,
+    	Result:Fertilizer,
+    	NeedToBeLearn:true,
+    	Sound:shoveling
+    	Time:150.0,
+    	Category:Farming,
+        OnGiveXP:HCFarming_OnGiveXP,
+    }
+
+recipe Fill Bag With Rice Hull Charcoal
+    {
+    	HCKuntan=10,
+    	EmptySandbag,
+    	Result:Fertilizer,
+    	NeedToBeLearn:true,
+    	Sound:shoveling
+    	Time:150.0,
+    	Category:Farming,
+        OnGiveXP:HCFarming_OnGiveXP,
+    }
+
+recipe Build Compost Bin
+    {
+    	SkillRequired:Woodwork=5;Farming=5;,
+    	keep [Recipe.GetItemTypes.Hammer],
+    	Nails=2,
+    	Plank=2,
+    	Worm=5,
+	keep HCGardenbench,
+    	Result:HCCompostbin,
+    	NeedToBeLearn:true,
+    	CanBeDoneFromFloor:true,
+    	Sound:PZ_Hammer,
+    	Time:250,
+    	Category:Farming,
+        OnGiveXP:HCFarming_OnGiveXP,
+    }
+
+recipe Build Composter
+    {
+    	SkillRequired:Farming=10;Mechanics=1;,
+	HCCompostbin,
+    	Worm=5,
+        HCBarrelmetalempty,
+        HCSteelrod=6,
+	Hinge,
+        Screws,
+	HCMetalwheel,
+    	HCWeldingset,
+    	keep [Recipe.GetItemTypes.WeldingMask],
+    	keep [Recipe.GetItemTypes.LeatherGloves],
+        keep Screwdriver,
+	keep HCGardenbench,
+    	Result:HCComposter,
+    	NeedToBeLearn:true,
+    	CanBeDoneFromFloor:true,
+    	Time:500,
+    	Category:Farming,
+        OnGiveXP:HCMechanicsFarming_OnGiveXP,
+    }
+
+recipe Build Spirulina Composter
+    {
+    	SkillRequired:Farming=10;Mechanics=1;,
+	HCComposter,
+	HCSpirulinatank,
+    	HCTablewood,
+	keep HCGardenbench,
+    	Result:HCComposter2,
+    	NeedToBeLearn:true,
+    	CanBeDoneFromFloor:true,
+    	Time:500,
+    	Category:Farming,
+        OnGiveXP:HCMechanicsFarming_OnGiveXP,
+    }
+
+recipe Harvest Spirulina Composter
+    	{
+    	keep HCComposter2,
+    	Water,
+    	Result:HCCompost=5,
+    	CanBeDoneFromFloor:true,
+    	Time:200,
+    	NeedToBeLearn:true,
+    	Category:Farming,
+    	OnGiveXP:HCFarming_OnGiveXP,
+    	}
+
+}
