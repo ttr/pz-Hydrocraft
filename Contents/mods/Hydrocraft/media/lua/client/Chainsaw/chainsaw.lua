@@ -3,16 +3,21 @@ local MOD_ID = "ChainSaw";
 local timeDown = 0;
 
 function chainsaw_swing(owner, weapon)
-	if owner:getPrimaryHandItem() and owner:getPrimaryHandItem():getType() == "ChainSaw" then	
-		
+	local gasconsume = 3
+	if owner:getPrimaryHandItem() and owner:getPrimaryHandItem():getType() == "ChainSaw" then
 		getSoundManager():PlayWorldSound('cs_hit', true, owner:getCurrentSquare(), 0, 4, 1, false);
-	
+		addSound(player, player:getX(), player:getY(), player:getZ(), 55, 55);
+		weapon:getModData().gasUse = weapon:getModData().gasUse - gasconsume;
+	elseif owner:getPrimaryHandItem() and owner:getPrimaryHandItem():getType() == "ChainSawNoGas" then
+		HaloTextHelper.addText(player, "Chainsaw have noi gas", HaloTextHelper.getColorRed());
 	end
 end
 
-function chainsaw_hit(wielder, weapon, damage)
-	local player = wielder;
-	
+function chainsaw_gas_idle()
+	local weapon = getPlayer():getPrimaryHandItem();
+	if weapon and weapon:getType() == "ChainSaw" then
+		weapon:getModData().gasUse = weapon:getModData().gasUse - 1;
+	end
 end
 
 function chainsaw_equip(leftHandItem)
@@ -47,30 +52,20 @@ function chainsaw_func(player)
 				
 			if timeDown % 25 == 0 then
 				getSoundManager():PlayWorldSoundWav('cs_idle', false, player:getSquare(), 0, 0, 0, false);
-				addSound(player, player:getX(), player:getY(), player:getZ(), 35, 35);
+				addSound(player, player:getX(), player:getY(), player:getZ(), 25, 25);
 			end
 			
 			if(weapon:getModData().gasUse <= 0) then
-				
 				player:getInventory():Remove(weapon);
 				weapon = player:getInventory():AddItem("Hydrocraft.ChainSawNoGas");
 				weapon:getModData().gasUse = 0;
 				player:setPrimaryHandItem(weapon);
 				player:setSecondaryHandItem(weapon); 
-				
-			elseif timeDown % 200 == 0 then
-				weapon:getModData().gasUse = weapon:getModData().gasUse - 1;
-				player:Say("ChainSaw Gas:" .. tostring(weapon:getModData().gasUse) .. "%");
 			end
 			-- print(timeDown);
 		
 		end
 	end
-end
-
-function chainsaw_add(player, square)
-	player:getInventory():AddItem("Hydrocraft.ChainSawNoGas");
-	player:getInventory():AddItem("Base.PetrolCan");
 end
 
 function chainsaw_init() -- probably not needed anymore
@@ -102,12 +97,11 @@ function chainsaw_loadModel()
 
 end
 
---Events.OnGameBoot.Add(chainsaw_loadModel);
---Events.OnEquipPrimary.Add(chainsaw_equip);
---Events.OnWeaponSwing.Add(chainsaw_swing);
---Events.OnWeaponHitCharacter.Add(chainsaw_hit);
---Events.OnWeaponHitTree.Add(chainsaw_hit);
---Events.OnPlayerUpdate.Add(chainsaw_func);
---Events.OnNewGame.Add(chainsaw_add);
---Events.OnGameStart.Add(chainsaw_init);
+Events.OnGameBoot.Add(chainsaw_loadModel);
+Events.OnEquipPrimary.Add(chainsaw_equip);
+Events.OnWeaponSwing.Add(chainsaw_swing);
+Events.OnWeaponHitTree.Add(chainsaw_swing);
+--Events.EveryTenMinutes.Add(chainsaw_gas_idle); -- this is costly in MP
+Events.OnPlayerUpdate.Add(chainsaw_func);
+Events.OnGameStart.Add(chainsaw_init);
 

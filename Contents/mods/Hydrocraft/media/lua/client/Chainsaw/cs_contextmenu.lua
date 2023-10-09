@@ -18,9 +18,6 @@ ChainSawMenu.doMenu = function(player, context, items)
 	
 end
 
-
-
-
 ChainSawMenu.onFill = function(item, player)
 	local playerObj = getSpecificPlayer(player)
 	local gasCan = playerObj:getInventory():FindAndReturn("PetrolCan");
@@ -36,7 +33,6 @@ ChainSawMenu.onFill = function(item, player)
 				gasCan:Use();
 				
 				if(chainSaw:getType() == "ChainSawNoGas") then 
-					--playerObj:Say("hahere dy");
 					local gasedchainsaw = playerObj:getInventory():AddItem("Hydrocraft.ChainSaw");
 					if(playerObj:getPrimaryHandItem() == chainSaw) then
 						playerObj:setPrimaryHandItem(gasedchainsaw);
@@ -48,25 +44,11 @@ ChainSawMenu.onFill = function(item, player)
 				end
 				chainSaw:getModData().gasUse = chainSaw:getModData().gasUse + 10;
 				if(chainSaw:getModData().gasUse > 100) then chainSaw:getModData().gasUse = 100; end
-				playerObj:Say("ChainSaw Gas:" .. tostring(chainSaw:getModData().gasUse) .. "%");
-				
-			else
-				playerObj:Say("Oh she is already 100% full. Silly me.");
 			end
-		else
-			playerObj:Say("Hmm I Should put the chain saw in my inventory first. Silly me.");
+			HaloTextHelper.addText(player, "ChainSaw Gas:" .. tostring(chainSaw:getModData().gasUse) .. "%", HaloTextHelper.getColorGreen());
 		end
-	else
-		playerObj:Say("Hmm I guess I need to get some gas before I can put gas in it. Silly me.");
 	end
 	
 end
-
-
-
-
-
-
-
 
 -- Events.OnFillInventoryObjectContextMenu.Add(ChainSawMenu.doMenu);
