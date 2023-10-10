@@ -179,6 +179,9 @@ module Hydrocraft
  * based on improvised spear - bottom sections are same in all and almost copy of vanilla one
  * prev definitions where way off, making vanilla wood spear always better option
  * also, WeaponSprite is only for steel one - using same for iron but rest will use vanilla
+ *
+ * Models do look like difference is that it's tip on wood spear, which would not increase condition at all.
+ * So, lets assume this is wooden base covered with smelted metal at least half way from tip - this way it would make sense to increase condition as it was intended.
  */
     item HCSpearsteel
     {
@@ -371,18 +374,20 @@ module Hydrocraft
 		AttachmentType = Shovel,
         Tags = FishingSpear,
     }
-
+/*
+ * stone based spears can't follow above rule so they are bit different - condition is bit better but not much.
+ */
     item HCSpearobsidian
     {
 		DisplayName					=	Obsidian Spear,
-		Weight						=	3,
+		Weight						=	1.8,
 		ConditionLowerChanceOneIn			=	4,
-		ConditionMax					=	10,
+		ConditionMax					=	8,
 		Icon						=	HCSpearobsidian,
+		MaxRange		=	1.45,
 
 		DisplayCategory = WepMelee,
-		MaxRange		=	1.4,
-        WeaponSprite	=	SpearCrafted,
+		WeaponSprite	=	SpearCrafted,
         MinAngle	=	0.8,
         Type	=	Weapon,
         MinimumSwingTime	=	2,
@@ -424,13 +429,13 @@ module Hydrocraft
     item HCSpearstone
     {
 		DisplayName					=	Stone Spear,
-		Weight						=	2,
+		Weight						=	1.8,
 		ConditionLowerChanceOneIn			=	3,
-		ConditionMax					=	10,
+		ConditionMax					=	8,
 		Icon						=	HCSpearstone,
+		MaxRange		=	1.45,
 
 		DisplayCategory = WepMelee,
-		MaxRange		=	1.4,
         WeaponSprite	=	SpearCrafted,
         MinAngle	=	0.8,
         Type	=	Weapon,
@@ -977,79 +982,79 @@ recipe Make Copper Halberd
 recipe Make Steel Spear
 	{
 		SkillRequired:Maintenance=2,
-	   	HCSteelingot,
-    		WoodenStick/TreeBranch,
-    		keep HCSmithyhammersteel/HCSmithyhammertitanium,
-    		[Recipe.GetItemTypes.BlacksmithTongs],
-    		keep [Recipe.GetItemTypes.LeatherGloves]/HCOvenmitts,
+	   	HCSteelingot=2,
+    	WoodenStick/TreeBranch,
+    	keep HCSmithyhammersteel/HCSmithyhammertitanium,
+    	[Recipe.GetItemTypes.BlacksmithTongs],
+    	keep [Recipe.GetItemTypes.LeatherGloves]/HCOvenmitts,
 		keep HCAnvil/HCAnvillead/HCAnvil2/HCAnvillead2,
-    		CanBeDoneFromFloor:true,
+    	CanBeDoneFromFloor:true,
 	   	Result:HCSpearsteel,
 	   	Time:150.0,
-       		Category:Smithing,
-    		OnGiveXP:HCWelding_OnGiveXP,
+       	Category:Smithing,
+    	OnGiveXP:HCWelding_OnGiveXP,
 	}
 
 recipe Make Iron Spear
 	{
 		SkillRequired:Maintenance=2,
-	   	HCIroningot,
-    		WoodenStick/TreeBranch,
-    		keep HCSmithyhammeriron/HCSmithyhammersteel/HCSmithyhammertitanium,
-    		[Recipe.GetItemTypes.BlacksmithTongs],
-    		keep [Recipe.GetItemTypes.LeatherGloves]/HCOvenmitts,
+	   	HCIroningot=2,
+    	WoodenStick/TreeBranch,
+    	keep HCSmithyhammeriron/HCSmithyhammersteel/HCSmithyhammertitanium,
+    	[Recipe.GetItemTypes.BlacksmithTongs],
+    	keep [Recipe.GetItemTypes.LeatherGloves]/HCOvenmitts,
 		keep HCAnvil/HCAnvillead/HCAnvil2/HCAnvillead2,
-    		CanBeDoneFromFloor:true,
+    	CanBeDoneFromFloor:true,
 	   	Result:HCSpeariron,
 	   	Time:150.0,
-       		Category:Smithing,
-    		OnGiveXP:HCWelding_OnGiveXP,
+       	Category:Smithing,
+    	OnGiveXP:HCWelding_OnGiveXP,
 	}
 
 recipe Make Bronze Spear
 	{
 		SkillRequired:Maintenance=2,
-	   	HCBronzeingot,
-    		WoodenStick/TreeBranch,
-    		keep HCSmithyhammerbronze/HCSmithyhammeriron/HCSmithyhammersteel/HCSmithyhammertitanium,
-    		[Recipe.GetItemTypes.BlacksmithTongs],
-    		keep [Recipe.GetItemTypes.LeatherGloves]/HCOvenmitts,
+	   	HCBronzeingot=2,
+    	WoodenStick/TreeBranch,
+    	keep HCSmithyhammerbronze/HCSmithyhammeriron/HCSmithyhammersteel/HCSmithyhammertitanium,
+    	[Recipe.GetItemTypes.BlacksmithTongs],
+    	keep [Recipe.GetItemTypes.LeatherGloves]/HCOvenmitts,
 		keep HCAnvil/HCAnvillead/HCAnvil2/HCAnvillead2/HCAnvilstone/HCAnvilstone2,
-    		CanBeDoneFromFloor:true,
+    	CanBeDoneFromFloor:true,
 	   	Result:HCSpearbronze,
 	   	Time:150.0,
-       		Category:Smithing,
-    		OnGiveXP:HCWelding_OnGiveXP,
+       	Category:Smithing,
+    	OnGiveXP:HCWelding_OnGiveXP,
 	}
 
 
 recipe Make Copper Spear
 	{
 		SkillRequired:Maintenance=2,
-	   	HCCopperingot,
-    		WoodenStick/TreeBranch,
-    		keep HCSmithyhammercopper/HCSmithyhammerbronze/HCSmithyhammeriron/HCSmithyhammersteel/HCSmithyhammertitanium,
-    		[Recipe.GetItemTypes.BlacksmithTongs],
-    		keep [Recipe.GetItemTypes.LeatherGloves]/HCOvenmitts,
+	   	HCCopperingot=2,
+    	WoodenStick/TreeBranch,
+    	keep HCSmithyhammercopper/HCSmithyhammerbronze/HCSmithyhammeriron/HCSmithyhammersteel/HCSmithyhammertitanium,
+    	[Recipe.GetItemTypes.BlacksmithTongs],
+    	keep [Recipe.GetItemTypes.LeatherGloves]/HCOvenmitts,
 		keep HCAnvil/HCAnvillead/HCAnvil2/HCAnvillead2/HCAnvilstone/HCAnvilstone2,
-    		CanBeDoneFromFloor:true,
+    	CanBeDoneFromFloor:true,
 	   	Result:HCSpearcopper,
 	   	Time:150.0,
-       		Category:Smithing,
-    		OnGiveXP:HCWelding_OnGiveXP,
+       	Category:Smithing,
+    	OnGiveXP:HCWelding_OnGiveXP,
 	}
 
 recipe Make Obsdian Spear
 	{
 		SkillRequired:Maintenance=2,
 	   	HCObsidian,
-    		WoodenStick/TreeBranch,
-    		Twine,
-    		keep Stone/HCChisel,
+    	WoodenStick/TreeBranch,
+    	Twine,
+    	keep Stone/HCChisel,
 	   	Result:HCSpearobsidian,
 	   	Time:100.0,
-    		Category:Survivalist,
-    		OnGiveXP:Recipe.OnGiveXP.None,
+    	Category:Survivalist,
+    	OnGiveXP:Recipe.OnGiveXP.None,
 	}
 
 recipe Make Stone Spear
