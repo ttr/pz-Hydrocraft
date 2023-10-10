@@ -27,5 +27,7 @@ Sandbox_EN = {
 	Sandbox_Hydrocraft_Zombie_Loot_tooltip = "Changes the amount of loot on dead zombies.  It does not impact on vanilla loot, just the 'extra' loot added by Hydrocraft (which includes some vanilla items)."
 	Sandbox_Hydrocraft_Zombie_Loot_option1 = "Normal (default)"
 	Sandbox_Hydrocraft_Zombie_Loot_option2 = "Low"
-	Sandbox_Hydrocraft_Zombie_Loot_option3 = "Very Low"	
+	Sandbox_Hydrocraft_Zombie_Loot_option3 = "Very Low"
+	
+	Sandbox_Hydrocraft_Farming_Watering_System = "Use HC auto-watering in farming (disable if mods like 'drip irrigation' are also used)"
 }

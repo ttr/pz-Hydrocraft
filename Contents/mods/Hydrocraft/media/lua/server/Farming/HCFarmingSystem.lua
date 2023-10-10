@@ -78,138 +78,135 @@ end
 
 function SFarmingSystem:changeHealth()
 
-local lightStrength = ClimateManager.getInstance():getDayLightStrength()
-local rainStrength = ClimateManager.getInstance():getRainIntensity()
-local windStrength = ClimateManager.getInstance():getWindIntensity()
-local luaObject = nil
-local props = nil
-local minWater = 0
-local maxWater = 0
-local availableWater = 0
-local waterbarrel = nil
-local waterNeeded = 0 
+	local lightStrength = ClimateManager.getInstance():getDayLightStrength()
+	local rainStrength = ClimateManager.getInstance():getRainIntensity()
+	local windStrength = ClimateManager.getInstance():getWindIntensity()
+	local luaObject = nil
+	local props = nil
+	local minWater = 0
+	local maxWater = 0
+	local availableWater = 0
+	local waterbarrel = nil
+	local waterNeeded = 0 
 
-local needs=0
-local has=0
+	local needs=0
+	local has=0
 
-for i=1,self:getLuaObjectCount() do
-	luaObject = self:getLuaObjectByIndex(i)
-	local temperature = ClimateManager.getInstance():getAirTemperatureForSquare( luaObject:getSquare() ) --indoor temp is 22a
+	for i=1,self:getLuaObjectCount() do
+		luaObject = self:getLuaObjectByIndex(i)
+		local temperature = ClimateManager.getInstance():getAirTemperatureForSquare( luaObject:getSquare() ) --indoor temp is 22a
 
-	if luaObject.state == "seeded" then
-		props = farming_vegetableconf.props[luaObject.typeOfSeed]
-		availableWater = luaObject.waterLvl
-		minWater = props.waterLvl
-		maxWater = props.waterLvlMax
-
-
-waterbarrel=self:findbarrel(luaObject.x, luaObject.y, luaObject.z)
-if waterbarrel ~= nil then
-	local raingutter=self:findRainGutter(waterbarrel.x, waterbarrel.y, waterbarrel.z)
-if raingutter then -- move water from raingutter to barrel
-	--print ("raingutter has:" .. raingutter:getWaterMax() .. "max and contains: ".. raingutter:getWaterAmount())
-	needs=waterbarrel.waterMax - waterbarrel.waterAmount
-	has=raingutter.waterAmount
-	--print ("needs:".. needs .. "has:".. has)
-	
-	if needs >= has then 
-		raingutter.waterAmount = 0
-		waterbarrel.waterAmount = (waterbarrel.waterAmount+needs)
-	else 
-		raingutter.waterAmount = raingutter.waterAmount-needs
-		waterbarrel.waterAmount = waterbarrel.waterMax
-	end
-	-- transmits changes to the world object
-	local isoObject = raingutter:getIsoObject()
-	if isoObject then -- object might have been destroyed
-		self:noise('added rain to barrel at '..raingutter.x..","..raingutter.y..","..raingutter.z..' waterAmount='..raingutter.waterAmount)
-		isoObject:setWaterAmount(raingutter.waterAmount)
-		isoObject:transmitModData()
-	end
-end -- move water from raingutter to barrel
-
-
---print ("plant:" ..  availableWater ..   " barrel: ".. waterbarrel:getWaterAmount())
-
-if availableWater < maxWater then
-	waterNeeded = maxWater - availableWater 
-	if waterNeeded < waterbarrel.waterAmount then
-		waterbarrel.waterAmount = waterbarrel.waterAmount - (waterNeeded / 4)
-		availableWater=100
-		luaObject.waterLvl=100
-		-- transmits changes to the world object
-		local isoObject = waterbarrel:getIsoObject()
-		if isoObject then -- object might have been destroyed
-			isoObject:setWaterAmount(waterbarrel.waterAmount)
-			isoObject:transmitModData()
-		end
-	end
-end
-	--waterbarrel:setWaterAmount(300)
-end
-
-
-		--print ("*******  Change Health for:" .. luaObject.typeOfSeed .. "  temp:" .. temperature .. "  Waterlevel:" .. availableWater)
-
-		if not luaObject.exterior then -- ***indoors***
-			if luaObject:getSquare() ~= nil then 
-				self:checkWindowsAndGreenhouse(luaObject)
-			end
-			if luaObject.greenhouse then --indoors with greenhouse: no negative effects on weather
-				print (luaObject.typeOfSeed .. "plant is indoors with greenhouse")
-				luaObject.health = luaObject.health + (lightStrength*3) 
-			else 
-				print (luaObject.typeOfSeed .. "plant is indoors without a greenhouse")
-				luaObject.health = luaObject.health - 10 -- no indoor growing without a greenhouse plant will die
-			end -- greenhouse check
-
-		else -- **** Outdoors ***	
-		print (luaObject.typeOfSeed .. " is Outside - storm and frost handling")
-			if temperature < 0 then  availableWater = 0 -- no available Water if outdoors and frozen
-			end
+		if luaObject.state == "seeded" then
+			props = farming_vegetableconf.props[luaObject.typeOfSeed]
 			
-			-- temp handling
-			if temperature < props.bestTemp then luaObject.health = luaObject.health + 0.5 - (props.bestTemp - temperature) / (props.bestTemp - props.minTemp) * 1.5 -- +0.5 at best temp, -1 at min temp
-			else luaObject.health = luaObject.health + 0.5 - (props.bestTemp - temperature) / (props.bestTemp - props.maxTemp)  -- -0.5 at max temp
+			availableWater = luaObject.waterLvl
+			-- this can't be read from props as early stages do not have those values, duh
+			-- also, we need fallback for maxwater for health calc.
+			minWater = luaObject.waterLvl
+			if luaObject.waterLvlMax ~= nil then maxWater = luaObject.waterLvlMax else maxWater = 100 end
+			if SandboxVars.Hydrocraft.FarmingWateringSystem then
+				waterbarrel=self:findbarrel(luaObject.x, luaObject.y, luaObject.z)
+				if waterbarrel ~= nil then
+					local raingutter=self:findRainGutter(waterbarrel.x, waterbarrel.y, waterbarrel.z)
+					if raingutter then -- move water from raingutter to barrel
+						--print ("raingutter has:" .. raingutter:getWaterMax() .. "max and contains: ".. raingutter:getWaterAmount())
+						needs=waterbarrel.waterMax - waterbarrel.waterAmount
+						has=raingutter.waterAmount
+						--print ("needs:".. needs .. "has:".. has)
+
+						if needs >= has then
+							raingutter.waterAmount = 0
+							waterbarrel.waterAmount = (waterbarrel.waterAmount+needs)
+						else
+							raingutter.waterAmount = raingutter.waterAmount-needs
+							waterbarrel.waterAmount = waterbarrel.waterMax
+						end
+						-- transmits changes to the world object
+						local isoObject = raingutter:getIsoObject()
+						if isoObject then -- object might have been destroyed
+							self:noise('added rain to barrel at '..raingutter.x..","..raingutter.y..","..raingutter.z..' waterAmount='..raingutter.waterAmount)
+							isoObject:setWaterAmount(raingutter.waterAmount)
+							isoObject:transmitModData()
+						end
+					end -- move water from raingutter to barrel
+					--print ("plant:" ..  availableWater ..   " barrel: ".. waterbarrel:getWaterAmount())
+
+					if availableWater < maxWater then
+						waterNeeded = maxWater - availableWater 
+						if waterNeeded < waterbarrel.waterAmount then
+							waterbarrel.waterAmount = waterbarrel.waterAmount - (waterNeeded / 4)
+							availableWater=100
+							luaObject.waterLvl=100
+							-- transmits changes to the world object
+							local isoObject = waterbarrel:getIsoObject()
+							if isoObject then -- object might have been destroyed
+								isoObject:setWaterAmount(waterbarrel.waterAmount)
+								isoObject:transmitModData()
+							end
+						end
+					end
+				--waterbarrel:setWaterAmount(300)
+				end
+			end
+			--print ("*******  Change Health for:" .. luaObject.typeOfSeed .. "  temp:" .. temperature .. "  Waterlevel:" .. availableWater)
+
+			if not luaObject.exterior then -- ***indoors***
+				if luaObject:getSquare() ~= nil then
+					self:checkWindowsAndGreenhouse(luaObject)
+				end
+				if luaObject.greenhouse then --indoors with greenhouse: no negative effects on weather
+					print (luaObject.typeOfSeed .. "plant is indoors with greenhouse")
+					luaObject.health = luaObject.health + (lightStrength*3)
+				else
+					print (luaObject.typeOfSeed .. "plant is indoors without a greenhouse")
+					luaObject.health = luaObject.health - 10 -- no indoor growing without a greenhouse plant will die
+				end -- greenhouse check
+
+			else -- **** Outdoors ***	
+			print (luaObject.typeOfSeed .. " is Outside - storm and frost handling")
+				if temperature < 0 then  availableWater = 0 -- no available Water if outdoors and frozen
+				end
+				
+				-- temp handling
+				if temperature < props.bestTemp then luaObject.health = luaObject.health + 0.5 - (props.bestTemp - temperature) / (props.bestTemp - props.minTemp) * 1.5 -- +0.5 at best temp, -1 at min temp
+				else luaObject.health = luaObject.health + 0.5 - (props.bestTemp - temperature) / (props.bestTemp - props.maxTemp)  -- -0.5 at max temp
+				end
+
+				-- storm handling
+				if props.damageFromStorm and luaObject.nbOfGrow >= 3 and rainStrength > 0.5 and windStrength > 0.5 then luaObject.health = luaObject.health - (16 * rainStrength * windStrength -3) -- 1-13 damage
+				end
+
+			end -- indoors/outdoors	
+
+
+			-- sunlight
+			luaObject.health = luaObject.health + lightStrength / 5 -- only average ~0.1/h inside
+		
+			-- water levels
+			if availableWater < minWater then luaObject.health = luaObject.health - 0.5 - (minWater - availableWater) / 50 -- min 0.5 - max ~1.4/2.1, depending on plant
+			elseif availableWater > maxWater then luaObject.health = luaObject.health - (availableWater - maxWater) / 50 -- max ~0.3 damage for most plants
+			else luaObject.health = luaObject.health + 1 - math.abs(minWater + (maxWater-minWater)/2 - availableWater)/(maxWater-minWater)/2 -- 0-1 gain
 			end
 
-			-- storm handling
-			if props.damageFromStorm and luaObject.nbOfGrow >= 3 and rainStrength > 0.5 and windStrength > 0.5 then luaObject.health = luaObject.health - (16 * rainStrength * windStrength -3) -- 1-13 damage
+			-- mildew disease
+			if luaObject.mildewLvl > 0 then luaObject.health = luaObject.health - 0.2 - luaObject.mildewLvl/50 -- 0.2 - 2.2 damage
+			end
+			if luaObject.aphidLvl > 0 then luaObject.health = luaObject.health - 0.15 - luaObject.mildewLvl/75 -- 0.15 - 1.6 damage
+			end
+			if luaObject.fliesLvl > 0 then luaObject.health = luaObject.health - 0.1 - luaObject.mildewLvl/100 -- 0.1 - 1.1 damage
 			end
 
- 		end -- indoors/outdoors	
-
-
- 		-- sunlight
-		luaObject.health = luaObject.health + lightStrength / 5 -- only average ~0.1/h inside
-	
-		-- water levels
-		if availableWater < minWater then luaObject.health = luaObject.health - 0.5 - (minWater - availableWater) / 50 -- min 0.5 - max ~1.4/2.1, depending on plant
-		elseif availableWater > maxWater then luaObject.health = luaObject.health - (availableWater - maxWater) / 50 -- max ~0.3 damage for most plants
-		else luaObject.health = luaObject.health + 1 - math.abs(minWater + (maxWater-minWater)/2 - availableWater)/(maxWater-minWater)/2 -- 0-1 gain
-		end
-
-		-- mildew disease
-		if luaObject.mildewLvl > 0 then luaObject.health = luaObject.health - 0.2 - luaObject.mildewLvl/50 -- 0.2 - 2.2 damage
-		end
-		if luaObject.aphidLvl > 0 then luaObject.health = luaObject.health - 0.15 - luaObject.mildewLvl/75 -- 0.15 - 1.6 damage
-		end
-		if luaObject.fliesLvl > 0 then luaObject.health = luaObject.health - 0.1 - luaObject.mildewLvl/100 -- 0.1 - 1.1 damage
-		end
-
-		-- plant dies
-		if luaObject.health <= 0 then
-			if luaObject.exterior and rainStrength > 0.7 and windStrength > 0.7 then luaObject:destroyThis()
-			elseif luaObject.exterior and temperature <= 0 then luaObject:dryThis()
-			elseif luaObject.waterLvl <= 0 then luaObject:dryThis()
-			elseif luaObject.mildewLvl > 0 then luaObject:rottenThis()
-			else luaObject:dryThis()
+			-- plant dies
+			if luaObject.health <= 0 then
+				if luaObject.exterior and rainStrength > 0.7 and windStrength > 0.7 then luaObject:destroyThis()
+				elseif luaObject.exterior and temperature <= 0 then luaObject:dryThis()
+				elseif luaObject.waterLvl <= 0 then luaObject:dryThis()
+				elseif luaObject.mildewLvl > 0 then luaObject:rottenThis()
+				else luaObject:dryThis()
+				end
 			end
-		end
-			
-
-end -- seeded?
-end -- loop over getLuaObjectCount
+		end -- seeded?
+	end -- loop over getLuaObjectCount
 end -- function
 
 

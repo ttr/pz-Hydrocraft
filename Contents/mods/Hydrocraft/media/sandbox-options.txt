@@ -65,3 +65,10 @@ option Hydrocraft.ZombieLoot
 	page = Hydrocraft,
 	translation = Hydrocraft_Zombie_Loot,
 }
+option Hydrocraft.FarmingWateringSystem
+{
+	type = boolean,
+	default = true,
+	page = Hydrocraft,
+	translation = Hydrocraft_Farming_Watering_System,
+}
