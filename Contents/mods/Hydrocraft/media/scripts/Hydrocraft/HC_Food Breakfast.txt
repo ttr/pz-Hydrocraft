@@ -178,26 +178,25 @@ item HCOmeletveg
 
 item HCHardboiledegg
 	{
-	HungerChange			=	-15,
-	Type				=	Food,
-	MinutesToCook			=	10,
-	Weight				=	0.1,
-	IsCookable			=	TRUE,
-	DangerousUncooked		=	TRUE,
-	DaysTotallyRotten		=	4,
-	MinutesToBurn			=	20,
-	DisplayName			=	Hard Boiled Egg,
-	DaysTotallyRotten		=	25,
-	DaysFresh			=	12,
-	Icon				=	Egg,
-	EvolvedRecipe 			= 	Stir fry:10;Sandwich:10;Burger:10;Salad:10;Roasted Vegetables:10,
-	FoodType			=	Egg,
-	Carbohydrates 			= 	1.1,
-        Proteins 			= 	13,
-        Lipids 				= 	11,
-        Calories 			= 	155,
-	CantBeFrozen 			= 	TRUE,
-	DisplayCategory          =   FoodP,
+		HungerChange		=	-15,
+		Type				=	Food,
+		Weight				=	0.1,
+		IsCookable			=	False,
+		DangerousUncooked	=	False,
+		DaysTotallyRotten	=	4,
+		MinutesToBurn		=	20,
+		DisplayName			=	Hard Boiled Egg,
+		DaysTotallyRotten	=	25,
+		DaysFresh			=	12,
+		Icon				=	Egg,
+		EvolvedRecipe 		= 	Stir fry:10;Sandwich:10;Burger:10;Salad:10;Roasted Vegetables:10,
+		FoodType			=	Egg,
+		Carbohydrates 		= 	1.1,
+		Proteins 			= 	13,
+		Lipids 				= 	11,
+		Calories 			= 	155,
+		CantBeFrozen 		= 	TRUE,
+		DisplayCategory     =   FoodP,
 	}
 
 	
@@ -270,13 +269,14 @@ recipe Make Vegetable Omelet
 recipe Boil Egg
 	{
 		[Recipe.GetItemTypes.Egg],
-		Water,
-		keep Pot,
+		WaterPot;5,
+		CanBeDoneFromFloor:true,
 		Result:HCHardboiledegg,
 		Time:50.0,
-    		NeedToBeLearn:true,
-	   	Category:Cooking,
-       		OnGiveXP:HCCooking_OnGiveXP,
+		NeedToBeLearn:true,
+		Heat:-0.22,
+		Category:Cooking,
+		OnGiveXP:HCCooking_OnGiveXP,
 	}
 
 }
