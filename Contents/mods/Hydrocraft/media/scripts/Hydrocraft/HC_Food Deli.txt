@@ -27,23 +27,6 @@ item HCSlicedtomato
 	DisplayCategory          =   FoodP,
 	}
 		
-item HCSlicedonion
-	{
-	Type				=	Food,
-	DisplayName			=	Sliced Onion,
-	Icon				=	HCSlicedonion,
-	Weight				=	0.1,
-	DaysFresh 			= 	4,
-	DaysTotallyRotten		=	12,
-	HungerChange			=	-5,
-	EvolvedRecipe 			=	Stew:5;Stir fry:5;Sandwich:5;Salad:5;Roasted Vegetables:5;RicePot:15;RicePan:5;PastaPot:5;PastaPan:5,
-	FoodType    			=	Vegetables,
-    Carbohydrates 			= 	3.28,
-    Proteins 			= 	0.38,
-    Lipids 				= 	0.04,
-    Calories 			= 	8,
-	DisplayCategory          =   FoodP,
-	}
 
 item HCSalami
 	{
@@ -141,16 +124,6 @@ recipe Slice Tomato
 		keep KitchenKnife,
 		Tomato,	
 		Result:HCSlicedtomato = 4,
-		Time:100.0,
-	   	Category:Cooking,
-       		OnGiveXP:HCCooking_OnGiveXP,
-	}
-	  
-recipe Slice Onion
-	{
-		keep KitchenKnife,
-		Onion,		
-	    	Result:HCSlicedonion = 2,
 		Time:100.0,
 	   	Category:Cooking,
        		OnGiveXP:HCCooking_OnGiveXP,

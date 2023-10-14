@@ -604,7 +604,7 @@ recipe Make Big Tasty Sandwiches
 	HCWholegrainbread,
 	MeatPatty=2,
 	HCSlicedtomato = 8,
-	HCSlicedonion = 8,
+	OnionRings = 8,
 	Butter,
 	HCOreganoleaf=4,
 	keep KitchenKnife,

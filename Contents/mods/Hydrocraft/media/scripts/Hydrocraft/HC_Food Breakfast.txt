@@ -258,7 +258,7 @@ recipe Make Vegetable Omelet
 		keep HCSpatula/HCWoodenspatula/Spatula,
 		[Recipe.GetItemTypes.Egg],
 		HCGratedcheese/HCGratedcheddar/Processedcheese,
-		BellPepper/HCBellpepperyellow/HCBellpeppergreen/Broccoli/Leek/Eggplant/HCBunchofshrooms/HCSlicedonion/HCSlicedtomato/HCDriedtomatobag/HCCannedshrooms/HCSpinach/HCChiligreen/HCChilipepper,
+		BellPepper/HCBellpepperyellow/HCBellpeppergreen/Broccoli/Leek/Eggplant/HCBunchofshrooms/OnionRings/HCSlicedtomato/HCDriedtomatobag/HCCannedshrooms/HCSpinach/HCChiligreen/HCChilipepper,
 		Result:HCOmeletveg,
 		Time:45.0,
     		NeedToBeLearn:true,
@@ -269,7 +269,7 @@ recipe Make Vegetable Omelet
 recipe Boil Egg
 	{
 		[Recipe.GetItemTypes.Egg],
-		WaterPot;5,
+		WaterPot=5,
 		CanBeDoneFromFloor:true,
 		Result:HCHardboiledegg,
 		Time:50.0,
@@ -278,5 +278,16 @@ recipe Boil Egg
 		Category:Cooking,
 		OnGiveXP:HCCooking_OnGiveXP,
 	}
-
+recipe Boil Egg
+	{
+		[Recipe.GetItemTypes.Egg],
+		WaterSaucepan=10,
+		CanBeDoneFromFloor:true,
+		Result:HCHardboiledegg,
+		Time:50.0,
+		NeedToBeLearn:true,
+		Heat:-0.22,
+		Category:Cooking,
+		OnGiveXP:HCCooking_OnGiveXP,
+	}
 }
