@@ -88,6 +88,7 @@ function SFarmingSystem:changeHealth()
 	local availableWater = 0
 	local waterbarrel = nil
 	local waterNeeded = 0 
+	local tempHealthRatio = 1
 
 	local needs=0
 	local has=0
@@ -104,6 +105,10 @@ function SFarmingSystem:changeHealth()
 			-- also, we need fallback for maxwater for health calc.
 			minWater = luaObject.waterLvl
 			if luaObject.waterLvlMax ~= nil then maxWater = luaObject.waterLvlMax else maxWater = 100 end
+			if type(luaObject.health) == "number" and luaObject.health ~= luaObject.health then -- nan should never happen unless pland data got wiped.
+				print ("plant - nan health: " ..  luaObject.typeOfSeed)
+				luaObject.health = 5;
+			end
 			if SandboxVars.Hydrocraft.FarmingWateringSystem then
 				waterbarrel=self:findbarrel(luaObject.x, luaObject.y, luaObject.z)
 				if waterbarrel ~= nil then
@@ -149,7 +154,9 @@ function SFarmingSystem:changeHealth()
 				end
 			end
 			--print ("*******  Change Health for:" .. luaObject.typeOfSeed .. "  temp:" .. temperature .. "  Waterlevel:" .. availableWater)
-
+			--[[
+			 needs rewrite - indors needs to check roof (and extend to more Z levels but return penalty on sun), while outdoors to check weather
+			 ]]--
 			if not luaObject.exterior then -- ***indoors***
 				if luaObject:getSquare() ~= nil then
 					self:checkWindowsAndGreenhouse(luaObject)
@@ -164,13 +171,6 @@ function SFarmingSystem:changeHealth()
 
 			else -- **** Outdoors ***	
 			print (luaObject.typeOfSeed .. " is Outside - storm and frost handling")
-				if temperature < 0 then  availableWater = 0 -- no available Water if outdoors and frozen
-				end
-				
-				-- temp handling
-				if temperature < props.bestTemp then luaObject.health = luaObject.health + 0.5 - (props.bestTemp - temperature) / (props.bestTemp - props.minTemp) * 1.5 -- +0.5 at best temp, -1 at min temp
-				else luaObject.health = luaObject.health + 0.5 - (props.bestTemp - temperature) / (props.bestTemp - props.maxTemp)  -- -0.5 at max temp
-				end
 
 				-- storm handling
 				if props.damageFromStorm and luaObject.nbOfGrow >= 3 and rainStrength > 0.5 and windStrength > 0.5 then luaObject.health = luaObject.health - (16 * rainStrength * windStrength -3) -- 1-13 damage
@@ -178,7 +178,18 @@ function SFarmingSystem:changeHealth()
 
 			end -- indoors/outdoors	
 
-
+			-- temp handling -- freezing -> no watter
+			if temperature < 0 then  availableWater = 0 -- no available Water if outdoors and frozen
+			end
+			-- temp handing -- proper
+			-- at best +tempHealthRatio
+			-- at min/max +0h
+			-- min->best<-max +(0 - tempHealthRatio) in ilerp
+			-- < min ||  > max -(0 - -inf) in ilerp
+			if temperature < props.bestTemp then luaObject.health = luaObject.health + (tempHealthRatio * (temperature - props.minTemp) / (props.bestTemp - props.minTemp))
+			else luaObject.health = luaObject.health + (tempHealthRatio * (1 - (temperature - props.bestTemp) / (props.maxTemp - props.bestTemp)))
+			end
+			
 			-- sunlight
 			luaObject.health = luaObject.health + lightStrength / 5 -- only average ~0.1/h inside
 		
@@ -195,12 +206,13 @@ function SFarmingSystem:changeHealth()
 			end
 			if luaObject.fliesLvl > 0 then luaObject.health = luaObject.health - 0.1 - luaObject.mildewLvl/100 -- 0.1 - 1.1 damage
 			end
-
 			-- plant dies
 			if luaObject.health <= 0 then
 				if luaObject.exterior and rainStrength > 0.7 and windStrength > 0.7 then luaObject:destroyThis()
+				--[[ below code is redundant, as else does dryThis()
 				elseif luaObject.exterior and temperature <= 0 then luaObject:dryThis()
 				elseif luaObject.waterLvl <= 0 then luaObject:dryThis()
+				]]--
 				elseif luaObject.mildewLvl > 0 then luaObject:rottenThis()
 				else luaObject:dryThis()
 				end
