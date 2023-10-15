@@ -2581,6 +2581,17 @@ function HCOnEat_Cigarettes(food, character, percent)
 	end
 end
 
+-- trash for food trash
+function HCOnEat_Gum(food, character, percent)
+	if(SandboxVars.Hydrocraft.SpawnGumWrapper == true) then
+		local foodid = food:getScriptItem():getName()
+		local trash = foodid .. "trash"
+		if string.find(foodid, "HCGumstick") then trash = "Hydrocraft.HCGumsticktrash" end
+		character:getInventory():AddItem(trash)
+	end
+end
+
+
 function HCOpenSealedLetter(items, result, player)
 	local list = {
 		"Hydrocraft.HCMagazinemetalworking1",

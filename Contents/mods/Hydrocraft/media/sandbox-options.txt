@@ -23,6 +23,14 @@ option Hydrocraft.SpawnCigaretteButts
 	translation = Hydrocraft_Spawn_Cigarette_Butts,
 }
 
+option Hydrocraft.SpawnGumWrapper
+{
+	type = boolean,
+	default = true,
+	page = Hydrocraft,
+	translation = Hydrocraft_Spawn_SpawnGumWrapper,
+}
+
 option Hydrocraft.ShowDamage
 {
 	type = boolean,

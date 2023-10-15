@@ -40,7 +40,7 @@ item HCChocolatewhite
     Calories 			= 	1078,
 	CantBeFrozen 		= 	TRUE,
 	Packaged			=	TRUE,
-	ReplaceOnUse		=	HCChocolatewhitetrash,
+	OnEat 				= HCOnEat_Gum,
 	DisplayCategory          =   FoodN,
 	}
 
@@ -59,7 +59,7 @@ item HCChocolatedark
         Calories 			= 	1196,
 	CantBeFrozen 			= 	TRUE,
 	Packaged			=	TRUE,
-	ReplaceOnUse			=	HCChocolatedarktrash,
+	OnEat 				= HCOnEat_Gum,
 	DisplayCategory          =   FoodN,
 	}
 	
@@ -78,7 +78,7 @@ item HCTrailmix
         Calories 			= 	924,
 	CantBeFrozen 			= 	TRUE,
 	Packaged			=	TRUE,
-	ReplaceOnUse			=	HCTrailmixtrash,
+	OnEat 				= HCOnEat_Gum,
 	DisplayCategory          =   FoodN,
 	}
 	
@@ -115,20 +115,20 @@ item HCGum
 
 item HCGumstick
 	{
-	HungerChange			=	-1,
+	HungerChange		=	-1,
 	Weight				=	0.01,
 	Type				=	Food,
-	UnhappyChange			=	-10,
+	UnhappyChange		=	-5,
 	DisplayName			=	Stick of Chewing Gum,
 	Icon				=	HCGumstick,
 	FoodType			=	NoExplicit,
-	Carbohydrates 			= 	9.7,
+	Carbohydrates 		= 	9.7,
     Proteins 			= 	0,
     Lipids 				= 	0.03,
     Calories 			= 	36,
-	CantBeFrozen 			= 	TRUE,
+	CantBeFrozen 		= 	TRUE,
 	Packaged			=	TRUE,
-	ReplaceOnUse			=	HCGumsticktrash,
+	OnEat 				= HCOnEat_Gum,
 	DisplayCategory          =   FoodN,
 	}
 
@@ -149,7 +149,7 @@ item HCGumstick2
 	HungerChange		=	-1,
 	Weight				=	0.01,
 	Type				=	Food,
-	UnhappyChange		=	-10,
+	UnhappyChange		=	-5,
 	DisplayName			=	Stick of Chewing Gum,
 	Icon				=	HCGumstick2,
 	FoodType			=	NoExplicit,
@@ -159,7 +159,7 @@ item HCGumstick2
     Calories 			= 	36,
 	CantBeFrozen 		= 	TRUE,
 	Packaged			=	TRUE,
-	ReplaceOnUse		=	HCGumsticktrash,
+	OnEat 				= HCOnEat_Gum,
 	DisplayCategory          =   FoodN,
 	}
 
@@ -177,39 +177,39 @@ item HCGum3
 
 item HCGumstick3
 	{
-	HungerChange			=	-1,
+	HungerChange		=	-1,
 	Weight				=	0.01,
 	Type				=	Food,
-	UnhappyChange			=	-10,
+	UnhappyChange		=	-5,
 	DisplayName			=	Stick of Chewing Gum,
 	Icon				=	HCGumstick3,
 	FoodType			=	NoExplicit,
-	Carbohydrates 			= 	9.7,
+	Carbohydrates 		= 	9.7,
     Proteins 			= 	0,
     Lipids 				= 	0.03,
     Calories 			= 	36,
-	CantBeFrozen 			= 	TRUE,
+	CantBeFrozen 		= 	TRUE,
 	Packaged			=	TRUE,
-	ReplaceOnUse			=	HCGumsticktrash,
-	DisplayCategory          =   FoodN,
+	OnEat 				= HCOnEat_Gum,
+	DisplayCategory     =   FoodN,
 	}
 
-	item HCCandycorn
+item HCCandycorn
 	{
-		HungerChange		=	-25,
-		Weight				=	0.1,
-		Type				=	Food,
-		UnhappyChange		=	-10,
-		DisplayName			=	Candy Corn,
-		Icon				=	HCCandycorn,
-		FoodType			=	NoExplicit,
-		Carbohydrates 		= 	92,
-        Proteins 			= 	0,
-        Lipids 				= 	0,
-        Calories 			= 	360,
-		CantBeFrozen 		= 	TRUE,
-		Packaged			=	TRUE,
-		ReplaceOnUse		=	HCCandycorntrash,
+	HungerChange		=	-25,
+	Weight				=	0.1,
+	Type				=	Food,
+	UnhappyChange		=	-10,
+	DisplayName			=	Candy Corn,
+	Icon				=	HCCandycorn,
+	FoodType			=	NoExplicit,
+	Carbohydrates 		= 	92,
+	Proteins 			= 	0,
+	Lipids 				= 	0,
+	Calories 			= 	360,
+	CantBeFrozen 		= 	TRUE,
+	Packaged			=	TRUE,
+	OnEat 				= HCOnEat_Gum,
 	DisplayCategory          =   FoodN,
 	}
 
@@ -228,7 +228,7 @@ item HCCandymnm
     Calories 			= 	486,
 	CantBeFrozen		= 	TRUE,
 	Packaged			=	TRUE,
-	ReplaceOnUse		=	HCCandymnmtrash,
+	OnEat 				= HCOnEat_Gum,
 	DisplayCategory          =   FoodN,
 	}
 
@@ -242,12 +242,12 @@ item HCCandyrainbow
 	Icon				=	HCCandyrainbow,
 	FoodType			=	NoExplicit,
 	Carbohydrates 			= 	70,
-        Proteins 			= 	1,
-        Lipids 				= 	2,
-        Calories 			= 	390,
+    Proteins 			= 	1,
+    Lipids 				= 	2,
+    Calories 			= 	390,
 	CantBeFrozen 			= 	TRUE,
 	Packaged			=	TRUE,
-	ReplaceOnUse			=	HCCandyrainbowtrash,
+	OnEat 				= HCOnEat_Gum,
 	DisplayCategory          =   FoodN,
 	}
 
@@ -266,7 +266,7 @@ item HCGummybears
         Calories 			= 	316,
 	CantBeFrozen 			= 	TRUE,
 	Packaged			=	TRUE,
-	ReplaceOnUse			=	HCGummybearstrash,
+	OnEat 				= HCOnEat_Gum,
 	DisplayCategory          =   FoodN,
 	}
 
@@ -285,7 +285,7 @@ item HCGummyworms
         Calories 			= 	316,
 	CantBeFrozen 			= 	TRUE,
 	Packaged			=	TRUE,
-	ReplaceOnUse			=	HCGummywormstrash,
+	OnEat 				= HCOnEat_Gum,
 	DisplayCategory          =   FoodN,
 	}
 
@@ -304,7 +304,7 @@ item HCJellybeans
         Calories 			= 	373,
 	CantBeFrozen 			= 	TRUE,
 	Packaged			=	TRUE,
-	ReplaceOnUse			=	HCJellybeanstrash,
+	OnEat 				= HCOnEat_Gum,
 	DisplayCategory          =   FoodN,
 	}
 
@@ -323,7 +323,7 @@ item HCTaffy
         Calories 			= 	435,
 	CantBeFrozen 			= 	TRUE,
 	Packaged			=	TRUE,
-	ReplaceOnUse			=	HCTaffytrash,
+	OnEat 				= HCOnEat_Gum,
 	DisplayCategory          =   FoodN,
 	}
 

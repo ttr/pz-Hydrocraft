@@ -42,7 +42,7 @@ item HCCigarettecartonlights
     {
         Weight    		= 1,
         Type    		= Normal,
-        DisplayName     	= Light Cigarette Carton,
+        DisplayName     = Light Cigarette Carton,
         icon 			= HCCigarettecartonlights,
 		DisplayCategory	= Drugs,
 		WorldStaticModel = Hydrocraft.HCCigarettecartonlights,
