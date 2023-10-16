@@ -3635,7 +3635,7 @@ ItemValueTable["Hydrocraft.HCSteelboard"] = 0.00 ;
 ItemValueTable["Hydrocraft.HCSteelingot"] = 0.00 ;
 ItemValueTable["Hydrocraft.HCSteelpipe"] = 0.00 ;
 ItemValueTable["Hydrocraft.HCSteelpole"] = 0.00 ;
-ItemValueTable["Hydrocraft.HCSteelrod"] = 0.00 ;
+
 ItemValueTable["Hydrocraft.HCSteelsheet"] = 0.00 ;
 ItemValueTable["Hydrocraft.HCSteelsheetlarge"] = 0.00 ;
 ItemValueTable["Hydrocraft.HCSteelspring"] = 0.00 ;

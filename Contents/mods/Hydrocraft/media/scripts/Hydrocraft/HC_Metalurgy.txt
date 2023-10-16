@@ -1838,7 +1838,7 @@ recipe Make Metal Pipe
 		OnCreate:getBurned,
 		OnGiveXP:HCWelding_OnGiveXP,
     }
-	
+/*	
 recipe Make Metal Bar
     {
 		SkillRequired:MetalWelding=2,
@@ -1857,5 +1857,5 @@ recipe Make Metal Bar
 		OnCreate:getBurned,
 		OnGiveXP:HCWelding_OnGiveXP,
     }
-
+*/
 }

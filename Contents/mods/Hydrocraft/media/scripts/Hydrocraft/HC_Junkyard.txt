@@ -359,7 +359,7 @@ recipe Upgrade To Medium Junkyard
     {
        	HCJunkyardsmallfull,
        	keep Shovel/Shovel2,
-       	HCSteelrod=3,
+       	MetalBar=3,
        	HCChickenwire=8,
        	keep [Recipe.GetItemTypes.Hammer],
        	CanBeDoneFromFloor:true,
@@ -428,7 +428,7 @@ recipe Upgrade To Large Junkyard
        	HCJunkyardmediumfull,
        	keep Shovel/Shovel2,
        	HCSteelbeam=6,
-       	HCSteelrod=12,
+       	MetalBar=12,
        	keep Screwdriver,
        	HCBolt=20,
 	HCNut=20,

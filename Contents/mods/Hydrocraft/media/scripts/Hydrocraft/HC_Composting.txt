@@ -118,7 +118,7 @@ recipe Build Composter
 	HCCompostbin,
     	Worm=5,
         HCBarrelmetalempty,
-        HCSteelrod=6,
+        MetalBar=6,
 	Hinge,
         Screws,
 	HCMetalwheel,

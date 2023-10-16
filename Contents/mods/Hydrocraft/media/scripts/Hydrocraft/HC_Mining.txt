@@ -768,7 +768,7 @@ recipe Upgrade Dark Mine
 	HCPully,
     HCRopethick=6,
 	HCCrank,
-	HCSteelrod,
+	MetalBar,
 	HCDarkmine/HCDarkmineB,
     keep [Recipe.GetItemTypes.LeatherGloves],
     CanBeDoneFromFloor:true,

@@ -931,7 +931,7 @@ recipe Make Fan Blade
 recipe Make Metal Casing
     {
         SheetMetal=6,
-        HCSteelrod=12,
+        MetalBar=12,
         HCWeldingset,
         keep [Recipe.GetItemTypes.WeldingMask],
         keep [Recipe.GetItemTypes.LeatherGloves],
@@ -958,7 +958,7 @@ recipe Make Iron Wheel
 
 recipe Make Steel Wheel
     {
-        HCSteelrod=2,
+        MetalBar=2,
         HCMetalring,
         HCWeldingset,
         keep [Recipe.GetItemTypes.WeldingMask],
@@ -1042,7 +1042,7 @@ recipe Make Mine Cart
 	SkillRequired:Mechanics=2,
 	HCMetalwheel=4,
         SheetMetal=5,
-        HCSteelrod=8,
+        MetalBar=8,
 	HCSteelpole=2,
 	HCSteelbeam,
         HCWeldingset,
@@ -1058,7 +1058,7 @@ recipe Make Mine Cart
 
 recipe Make Dissection Table
     {
-        HCSteelrod=4,
+        MetalBar=4,
         HCLargesheetmetal=2,
         HCWeldingset,
         keep [Recipe.GetItemTypes.WeldingMask],
@@ -1094,7 +1094,7 @@ recipe Make Small Rolling Mill
     {
 	SkillRequired:Mechanics=3,
 	HCCrank,
-	HCSteelrod=2,
+	MetalBar=2,
 	HCSteelingot,
 	HCIroningot=4,
     	keep HCSmithyhammersteel/HCSmithyhammertitanium,
@@ -1472,7 +1472,7 @@ recipe Make Electric Piston
 	HCGearsteel,
 	HCCablecopper=2,
         HCElectromotorsmall,
-	HCSteelrod,
+	MetalBar,
         SheetMetal=2,
         HCWeldingset,
         keep [Recipe.GetItemTypes.WeldingMask],
@@ -1570,7 +1570,7 @@ recipe Build Arc Furnace
 	Sandbag=48,
 	EmptySandbag=12,
 	HCGraphiterod=3,
-	HCSteelrod,
+	MetalBar,
         HCSteelpole=4,
 	HCMetalwheel,
     	HCWeldingset,

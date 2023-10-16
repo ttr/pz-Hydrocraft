@@ -485,7 +485,7 @@ item HCSmokedcheese
 recipe Make Smoker
     {
 	HCBarrelmetalempty=2,
-	HCSteelrod=6,
+	MetalBar=6,
         SheetMetal,
         HCSteelpipe,
 	HCMetalring,

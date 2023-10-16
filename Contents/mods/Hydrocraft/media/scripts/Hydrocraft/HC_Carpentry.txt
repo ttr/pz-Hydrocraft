@@ -1773,7 +1773,7 @@ recipe Build Mechanical Thresher
         SkillRequired:Woodwork=8;Mechanics=3;,
         HCCrank/HCCrankiron,
         HandScythe=6,
-        HCSteelrod=2,
+        MetalBar=2,
         HCGearsteel=8,
         HCWoodbeam=4,
         Plank=20,

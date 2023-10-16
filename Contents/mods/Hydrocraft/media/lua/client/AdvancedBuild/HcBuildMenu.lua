@@ -94,7 +94,7 @@ local tooltip
 option = HcSubMenu:addOption("Glass roof", nil, function() Hydrocraft.onBuildGlassRoof(player) end);
 tooltip = Hydrocraft.toolTipcheck(option)
 tooltip:setName("Glass roof")
-tooltip.description = "<RGB:1,1,1>Welding Mask <LINE>Propane Torch <LINE> Steel Rod: 2 <LINE> Glass Pane: 1"
+tooltip.description = "<RGB:1,1,1>Welding Mask <LINE>Propane Torch <LINE> Metal Bar: 2 <LINE> Scrap metal: 2 <LINE> Glass Pane: 1"
 tooltip:setTexture("roofs_02_55")
 end
 
@@ -104,7 +104,7 @@ local tooltip
 option = HcSubMenu:addOption("Glass Wall", nil, function() Hydrocraft.onBuildGlassWall(player) end);
 tooltip = Hydrocraft.toolTipcheck(option)
 tooltip:setName("Glass roof")
-tooltip.description = "<RGB:1,1,1>Welding Mask <LINE>Propane Torch <LINE> Steel Rod: 3 <LINE> Large Glass Pane: 1"
+tooltip.description = "<RGB:1,1,1>Welding Mask <LINE>Propane Torch <LINE> Metal Bar: 3 <LINE> Scrap metal: 3 <LINE> Large Glass Pane: 1"
 tooltip:setTexture("walls_commercial_01_97")
 end
 
@@ -346,7 +346,7 @@ stairs.isThumpable = false
 stairs.player = player
 stairs.name = "Steel Stairs"
 stairs.modData["need:Hydrocraft.HCSteelpole"] = "2"
-stairs.modData["need:Hydrocraft.HCSteelrod"] = "6"
+stairs.modData["need:Base.MetalBar"] = "6"
 stairs.modData["need:Hydrocraft.HCSteelsheet"] = "5"
 
 stairs.firstItem = "BlowTorch";
@@ -365,7 +365,8 @@ local floor = ISWoodenFloor:new("roofs_02_55","roofs_02_55");
 floor.player = player
 floor.name = "Glass roof"
 
-floor.modData["need:Hydrocraft.HCSteelrod"] = "2"
+floor.modData["need:Base.MetalBar"] = "2"
+floor.modData["need:Base.ScrapMetal"] = "2"
 floor.modData["need:Hydrocraft.HCGlasspane"] = "1"
 
 floor.firstItem = "BlowTorch";
@@ -386,7 +387,8 @@ wall.name = "Glass Wall"
 wall.canBarricade = false
 wall.hoppable = false
 
-wall.modData["need:Hydrocraft.HCSteelrod"] = "3"
+wall.modData["need:Base.MetalBar"] = "3"
+wall.modData["need:Base.ScrapMetal"] = "3"
 wall.modData["need:Hydrocraft.HCGlasspanelarge"] = "1"
 
 wall.firstItem = "BlowTorch";

@@ -904,7 +904,7 @@ recipe Make Thick Rope
 recipe Make Cotton Gin
     {
         HCCrank/HCCrankiron,
-        HCSteelrod=2,
+        MetalBar=2,
 	    BarbedWire=4,
 	    HCGeariron=8,
 	    HCRopethin,

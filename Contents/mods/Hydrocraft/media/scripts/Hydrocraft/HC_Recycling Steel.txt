@@ -12,7 +12,7 @@ module Hydrocraft
 recipe Recycle Steel
     {
     SkillRequired:MetalWelding=5,
-    Hammer/Saw/HCGiglisaw/Golfclub/Axe/LugWrench/Rake/HCHedgetrimmer/HCHedgetrimmerblade/HCHedgecutter/HCColander/HCToaster/MeatCleaver/HCBonesaw/PipeWrench/HCMakeshiftaxe/HCMakeshiftaxeworn/HCMakeshiftaxeblunt/HCAxehead/HCAxeheadworn/HCAxeheadblunt/HCMedicalbox/HCLunchbox/HCJuicer2/HCSkullsplitter/Katana/HCConanSword/HCWarhammersteel/HCHalberdsteel/HCSteelpipe/HCSteelsheet/HCSpikedmacesteel/HCSpikedflailsteel/HCTridentsteel/OldCarMuffler1/OldCarMuffler2/OldCarMuffler3/NormalCarMuffler1/NormalCarMuffler2/NormalCarMuffler3/ModernCarMuffler1/ModernCarMuffler2/ModernCarMuffler3/HCRadiator/NormalSuspension1/NormalSuspension2/NormalSuspension3/ModernSuspension1/ModernSuspension2/ModernSuspension3/OldBrake1/OldBrake2/OldBrake3/NormalBrake1/NormalBrake2/NormalBrake3/ModernBrake1/ModernBrake2/ModernBrake3/SmallGasTank1/SmallGasTank2/SmallGasTank3/NormalGasTank1/NormalGasTank2/NormalGasTank3/GloveBox1/GloveBox2/GloveBox3/HCPipebender/HCGlasscutter/HCLever/HCValve/PickAxe/Saucepan/MetalBar/HCPostholedigger/HCLooper,
+    Hammer/Saw/HCGiglisaw/Golfclub/Axe/LugWrench/Rake/HCHedgetrimmer/HCHedgetrimmerblade/HCHedgecutter/HCColander/HCToaster/MeatCleaver/HCBonesaw/PipeWrench/HCMakeshiftaxe/HCMakeshiftaxeworn/HCMakeshiftaxeblunt/HCAxehead/HCAxeheadworn/HCAxeheadblunt/HCMedicalbox/HCLunchbox/HCJuicer2/HCSkullsplitter/Katana/HCConanSword/HCWarhammersteel/HCHalberdsteel/HCSteelpipe/HCSteelsheet/HCSpikedmacesteel/HCSpikedflailsteel/HCTridentsteel/OldCarMuffler1/OldCarMuffler2/OldCarMuffler3/NormalCarMuffler1/NormalCarMuffler2/NormalCarMuffler3/ModernCarMuffler1/ModernCarMuffler2/ModernCarMuffler3/HCRadiator/NormalSuspension1/NormalSuspension2/NormalSuspension3/ModernSuspension1/ModernSuspension2/ModernSuspension3/OldBrake1/OldBrake2/OldBrake3/NormalBrake1/NormalBrake2/NormalBrake3/ModernBrake1/ModernBrake2/ModernBrake3/SmallGasTank1/SmallGasTank2/SmallGasTank3/NormalGasTank1/NormalGasTank2/NormalGasTank3/GloveBox1/GloveBox2/GloveBox3/HCPipebender/HCGlasscutter/HCLever/HCValve/PickAxe/Saucepan/HCPostholedigger/HCLooper,
     HCCoke,
     [Recipe.GetItemTypes.StartFire],
     HCIngotmold,
@@ -40,7 +40,7 @@ recipe Recycle Steel
     keep [Recipe.GetItemTypes.LeatherGloves]/HCFiresuit,
     keep HCFurnace2/HCBlastfurnace2,
     CanBeDoneFromFloor:true,
-    Result:HCSteelingot=3,
+    Result:HCSteelingot,
     NeedToBeLearn:true,
     Time:1000,
     Category:Smithing,
@@ -54,7 +54,7 @@ recipe Recycle Steel
     SkillRequired:MetalWelding=5,
     HCCoke,
     [Recipe.GetItemTypes.StartFire],
-    HCToolbox/Sledgehammer/HCSteelsheetlarge/BigGasTank1/BigGasTank2/BigGasTank3/SmallTrunk1/SmallTrunk2/SmallTrunk3/NormalTrunk1/NormalTrunk2/NormalTrunk3/HCMetalwheel,
+    MetalBar/HCToolbox/Sledgehammer/HCSteelsheetlarge/BigGasTank1/BigGasTank2/BigGasTank3/SmallTrunk1/SmallTrunk2/SmallTrunk3/NormalTrunk1/NormalTrunk2/NormalTrunk3/HCMetalwheel,
     HCIngotmold=2,
     [Recipe.GetItemTypes.BlacksmithTongs],
     keep [Recipe.GetItemTypes.LeatherGloves]/HCFiresuit,
@@ -72,7 +72,7 @@ recipe Recycle Steel
 recipe Recycle Steel
     {
     SkillRequired:MetalWelding=5,
-    HCSteelrod/HCAuger/BigTrunk1/BigTrunk2/BigTrunk3,
+    HCAuger/BigTrunk1/BigTrunk2/BigTrunk3,
     HCCoke,
     [Recipe.GetItemTypes.StartFire],
     HCIngotmold=3,

@@ -1578,7 +1578,7 @@ recipe Make Large Titanium Sheet
 
 recipe Make Steel Beam
 	{
-	HCSteelrod=3,
+	MetalBar=3,
 	[Recipe.GetItemTypes.StartFire],
 	Charcoal,
 
@@ -1621,7 +1621,7 @@ recipe Make Copper Pipe
   
 recipe Make Steel Crank
 	{
-	   	HCSteelrod,
+	   	MetalBar,
 	   	HCWoodblock,
     		keep HCSmithyhammersteel/HCSmithyhammertitanium,
     		[Recipe.GetItemTypes.BlacksmithTongs],
@@ -1653,7 +1653,7 @@ recipe Make Iron Crank
 
 recipe Make Lever
 	{
-	   	HCSteelrod,
+	   	MetalBar,
 	   	HCSteelingot,
 		Screws,
     		keep HCSmithyhammersteel/HCSmithyhammertitanium,
@@ -1670,7 +1670,7 @@ recipe Make Lever
 
 recipe Make Pipe Bender
 	{
-	   	HCSteelrod=2,
+	   	MetalBar=2,
 	   	HCSteelingot,
 		Screws,
     		keep HCSmithyhammersteel/HCSmithyhammertitanium,
@@ -1777,17 +1777,17 @@ recipe Make Lead Rod
 
 recipe Make Steel Rod
 	{
-	   	HCSteelingot=4,
-    		keep HCSmithyhammersteel/HCSmithyhammertitanium,
-    		[Recipe.GetItemTypes.BlacksmithTongs],
-    		keep [Recipe.GetItemTypes.LeatherGloves]/HCOvenmitts,
+	   	HCSteelingot=2,
+    	keep HCSmithyhammersteel/HCSmithyhammertitanium,
+    	[Recipe.GetItemTypes.BlacksmithTongs],
+    	keep [Recipe.GetItemTypes.LeatherGloves]/HCOvenmitts,
 		keep HCAnvil2/HCAnvillead2,
-    		CanBeDoneFromFloor:true,
-	   	Result:HCSteelrod,
+    	CanBeDoneFromFloor:true,
+	   	Result:MetalBar,
 	   	Time:150.0,
-    		NeedToBeLearn:true,
-       		Category:Smithing,
-    		OnGiveXP:HCWelding_OnGiveXP,
+    	NeedToBeLearn:true,
+       	Category:Smithing,
+    	OnGiveXP:HCWelding_OnGiveXP,
 	}
 
 recipe Make Titanium Rod
@@ -1853,7 +1853,7 @@ recipe Make Iron Pole
 
 recipe Make Steel Pole
     {
-    	HCSteelrod=2,
+    	MetalBar=2,
 		[Recipe.GetItemTypes.StartFire],
 		Charcoal,
 		Water,
@@ -1870,7 +1870,7 @@ recipe Make Steel Pole
 
 recipe Make Steel Pole
     {
-        HCSteelrod=2,
+        MetalBar=2,
         keep HCTriphammer/HCTriphammer2/HCSteamhammer2,
         [Recipe.GetItemTypes.BlacksmithTongs],
         keep [Recipe.GetItemTypes.LeatherGloves]/HCOvenmitts,
@@ -1920,7 +1920,7 @@ recipe Make Leaf Spring
 
 recipe Make Large Steel Ring
     {
-    		HCSteelrod,
+    		MetalBar,
     		keep HCSmithyhammersteel/HCSmithyhammertitanium,
     		[Recipe.GetItemTypes.BlacksmithTongs],
     		keep [Recipe.GetItemTypes.LeatherGloves]/HCOvenmitts,
