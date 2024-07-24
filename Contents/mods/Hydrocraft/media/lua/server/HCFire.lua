@@ -80,8 +80,8 @@ function getBurned(items, result, player)
 			burnPower=burnPower-bodyProtection[count] - ZombRand(10);
 		--print("Protection:" .. bodyProtection[count]," Burnpower:  " .. burnPower)
 
-
-			if (burnPower > 0) then
+				-- bodyProtection[5] is torso - if wearing firesuit or blackmist apron, apply it's benefits on all tests
+			if (burnPower-bodyProtection[5] > 0) then
 				bodyPart:AddDamage(burnPower);
 				bodyPart:setBurned();
 				player:getBodyDamage():SetBandaged(bodyPart:getIndex(), false, 0, false, nil);

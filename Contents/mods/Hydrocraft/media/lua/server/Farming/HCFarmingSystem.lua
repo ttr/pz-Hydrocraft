@@ -96,19 +96,15 @@ function SFarmingSystem:changeHealth()
 	for i=1,self:getLuaObjectCount() do
 		luaObject = self:getLuaObjectByIndex(i)
 		local temperature = ClimateManager.getInstance():getAirTemperatureForSquare( luaObject:getSquare() ) --indoor temp is 22a
-
 		if luaObject.state == "seeded" then
 			props = farming_vegetableconf.props[luaObject.typeOfSeed]
 			
 			availableWater = luaObject.waterLvl
 			-- this can't be read from props as early stages do not have those values, duh
 			-- also, we need fallback for maxwater for health calc.
-			minWater = luaObject.waterLvl
-			if luaObject.waterLvlMax ~= nil then maxWater = luaObject.waterLvlMax else maxWater = 100 end
-			if type(luaObject.health) == "number" and luaObject.health ~= luaObject.health then -- nan should never happen unless pland data got wiped.
-				print ("plant - nan health: " ..  luaObject.typeOfSeed)
-				luaObject.health = 5;
-			end
+			minWater = props.waterLvl
+			if props.waterLvlMax ~= nil then maxWater = props.waterLvlMax else maxWater = 100 end
+
 			if SandboxVars.Hydrocraft.FarmingWateringSystem then
 				waterbarrel=self:findbarrel(luaObject.x, luaObject.y, luaObject.z)
 				if waterbarrel ~= nil then
@@ -177,7 +173,7 @@ function SFarmingSystem:changeHealth()
 				end
 
 			end -- indoors/outdoors	
-
+			
 			-- temp handling -- freezing -> no watter
 			if temperature < 0 then  availableWater = 0 -- no available Water if outdoors and frozen
 			end
@@ -189,10 +185,10 @@ function SFarmingSystem:changeHealth()
 			if temperature < props.bestTemp then luaObject.health = luaObject.health + (tempHealthRatio * (temperature - props.minTemp) / (props.bestTemp - props.minTemp))
 			else luaObject.health = luaObject.health + (tempHealthRatio * (1 - (temperature - props.bestTemp) / (props.maxTemp - props.bestTemp)))
 			end
-			
+
 			-- sunlight
 			luaObject.health = luaObject.health + lightStrength / 5 -- only average ~0.1/h inside
-		
+
 			-- water levels
 			if availableWater < minWater then luaObject.health = luaObject.health - 0.5 - (minWater - availableWater) / 50 -- min 0.5 - max ~1.4/2.1, depending on plant
 			elseif availableWater > maxWater then luaObject.health = luaObject.health - (availableWater - maxWater) / 50 -- max ~0.3 damage for most plants
@@ -202,12 +198,14 @@ function SFarmingSystem:changeHealth()
 			-- mildew disease
 			if luaObject.mildewLvl > 0 then luaObject.health = luaObject.health - 0.2 - luaObject.mildewLvl/50 -- 0.2 - 2.2 damage
 			end
-			if luaObject.aphidLvl > 0 then luaObject.health = luaObject.health - 0.15 - luaObject.mildewLvl/75 -- 0.15 - 1.6 damage
+			if luaObject.aphidLvl > 0 then luaObject.health = luaObject.health - 0.15 - luaObject.aphidLvl/75 -- 0.15 - 1.6 damage
 			end
-			if luaObject.fliesLvl > 0 then luaObject.health = luaObject.health - 0.1 - luaObject.mildewLvl/100 -- 0.1 - 1.1 damage
+			if luaObject.fliesLvl > 0 then luaObject.health = luaObject.health - 0.1 - luaObject.fliesLvl/100 -- 0.1 - 1.1 damage
 			end
+			
 			-- plant dies
 			if luaObject.health <= 0 then
+				luaObject.health = 0;
 				if luaObject.exterior and rainStrength > 0.7 and windStrength > 0.7 then luaObject:destroyThis()
 				--[[ below code is redundant, as else does dryThis()
 				elseif luaObject.exterior and temperature <= 0 then luaObject:dryThis()
@@ -216,6 +214,10 @@ function SFarmingSystem:changeHealth()
 				elseif luaObject.mildewLvl > 0 then luaObject:rottenThis()
 				else luaObject:dryThis()
 				end
+			end
+			if type(luaObject.health) == "number" and luaObject.health ~= luaObject.health then -- nan should never happen unless plant data got wiped.
+				luaObject.health = 15;
+				print ("plant (nan) health: " ..  luaObject.typeOfSeed .. " resetting");
 			end
 		end -- seeded?
 	end -- loop over getLuaObjectCount

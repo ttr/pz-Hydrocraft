@@ -355,8 +355,9 @@ item HCFishhookbone
         UseWhileEquipped	=	FALSE,
         DisplayName		=	Jar of Glue,
         Icon			=	HCClayjarsmall,
-	ReplaceOnDeplete	=	Hydrocraft.HCClayjarsmall,
+		ReplaceOnDeplete	=	Hydrocraft.HCClayjarsmall,
 		DisplayCategory          =   CraftCarp,
+		Tags				= Glue
     	}
 
 item HCWoodgluejar
