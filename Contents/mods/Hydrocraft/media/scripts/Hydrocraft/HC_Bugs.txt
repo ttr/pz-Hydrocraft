@@ -533,16 +533,28 @@ item HCAntfarmred
 
 recipe Make Bug Net
     {
-	HCNetting=2,
-    	HCWoodenring,
-    	WoodenStick,
-    	Woodglue/HCWoodgluejar,
-    	Woodglue/HCWoodgluejar,
-    	Result:HCBugnet,
-    	NeedToBeLearn:true,
-    	Time:500,
-    	Category:Survivalist,
-   	OnGiveXP:Recipe.OnGiveXP.None,
+		HCNetting=2,
+		HCWoodenring,
+		WoodenStick,
+		Woodglue=4,
+		Result:HCBugnet,
+		NeedToBeLearn:true,
+		Time:500,
+		Category:Survivalist,
+		OnGiveXP:Recipe.OnGiveXP.None,
+    }
+
+recipe Make Bug Net
+    {
+		HCNetting=2,
+		HCWoodenring,
+		WoodenStick,
+		HCWoodgluejar=4,
+		Result:HCBugnet,
+		NeedToBeLearn:true,
+		Time:500,
+		Category:Survivalist,
+		OnGiveXP:Recipe.OnGiveXP.None,
     }
 
 recipe Put Bug in Jar

@@ -357,7 +357,7 @@ item HCFishhookbone
         Icon			=	HCClayjarsmall,
 		ReplaceOnDeplete	=	Hydrocraft.HCClayjarsmall,
 		DisplayCategory          =   CraftCarp,
-		Tags				= Glue
+		Tags				= Glue,
     	}
 
 item HCWoodgluejar
@@ -368,8 +368,9 @@ item HCWoodgluejar
         UseWhileEquipped	=	FALSE,
         DisplayName		=	Jar of Wood Glue,
         Icon			=	HCClayjarsmall,
-	ReplaceOnDeplete	=	Hydrocraft.HCClayjarsmall,
+		ReplaceOnDeplete	=	Hydrocraft.HCClayjarsmall,
 		DisplayCategory          =   CraftCarp,
+		Tags				= Glue,
     	}
 
 /************************WEAPONS************************/
@@ -753,87 +754,87 @@ recipe Dry Gelatin
     	}
 
 recipe Make Glue
-    	{
-    		HCBonepowder=5,
-		    HCGlueempty,
-    		Charcoal,
-    		[Recipe.GetItemTypes.StartFire],
-    		Water,
-    		keep HCClaycauldron/HCCauldroniron,
-    		CanBeDoneFromFloor:true,
-    		Result:Glue,
-    		NeedToBeLearn:true,
-    		Time:50,
-    		Category:Chemistry,
-   	 	OnGiveXP:HCCooking_OnGiveXP,
-    	}
+{
+	HCBonepowder=10,
+	HCGlueempty,
+	Charcoal,
+	[Recipe.GetItemTypes.StartFire],
+	Water,
+	keep HCClaycauldron/HCCauldroniron,
+	CanBeDoneFromFloor:true,
+	Result:Glue,
+	NeedToBeLearn:true,
+	Time:50,
+	Category:Chemistry,
+	OnGiveXP:HCCooking_OnGiveXP,
+}
 
-recipe Make Glue
-    	{
-    		HCBonepowder=10,
-		HCClayjarsmall,
-    		Charcoal,
-    		[Recipe.GetItemTypes.StartFire],
-    		Water,
-    		keep HCClaycauldron/HCCauldroniron,
-    		CanBeDoneFromFloor:true,
-    		Result:HCGluejar,
-    		NeedToBeLearn:true,
-    		Time:50,
-    		Category:Chemistry,
-   	 	OnGiveXP:HCCooking_OnGiveXP,
-    	}
-
-recipe Make Wood Glue
-    	{
-    		HCBonepowder=10,
-		HCWoodglueempty,
-		HCCandleberrywax/HCRefinedbeeswax/HCWaxrecycled,
-    		Charcoal,
-    		[Recipe.GetItemTypes.StartFire],
-    		Water,
-    		keep HCClaycauldron/HCCauldroniron,
-    		CanBeDoneFromFloor:true,
-    		Result:Woodglue,
-    		NeedToBeLearn:true,
-    		Time:50,
-    		Category:Chemistry,
-   	 	OnGiveXP:HCCooking_OnGiveXP,
-    	}
+recipe Make Glue (jar)
+{
+	HCBonepowder=10,
+	HCClayjarsmall,
+	Charcoal,
+	[Recipe.GetItemTypes.StartFire],
+	Water,
+	keep HCClaycauldron/HCCauldroniron,
+	CanBeDoneFromFloor:true,
+	Result:HCGluejar,
+	NeedToBeLearn:true,
+	Time:50,
+	Category:Chemistry,
+	OnGiveXP:HCCooking_OnGiveXP,
+}
 
 recipe Make Wood Glue
-    	{
-    		HCBonepowder=10,
-		HCClayjarsmall,
-		HCCandleberrywax/HCRefinedbeeswax/HCWaxrecycled,
-    		Charcoal,
-    		[Recipe.GetItemTypes.StartFire],
-    		Water,
-    		keep HCClaycauldron/HCCauldroniron,
-    		CanBeDoneFromFloor:true,
-    		Result:HCWoodgluejar,
-    		NeedToBeLearn:true,
-    		Time:50,
-    		Category:Chemistry,
-   	 	OnGiveXP:HCCooking_OnGiveXP,
-    	}
+{
+	HCBonepowder=10,
+	HCWoodglueempty,
+	HCCandleberrywax/HCRefinedbeeswax/HCWaxrecycled,
+	Charcoal,
+	[Recipe.GetItemTypes.StartFire],
+	Water,
+	keep HCClaycauldron/HCCauldroniron,
+	CanBeDoneFromFloor:true,
+	Result:Woodglue,
+	NeedToBeLearn:true,
+	Time:50,
+	Category:Chemistry,
+	OnGiveXP:HCCooking_OnGiveXP,
+}
+
+recipe Make Wood Glue
+{
+	HCBonepowder=10,
+	HCClayjarsmall,
+	HCCandleberrywax/HCRefinedbeeswax/HCWaxrecycled,
+	Charcoal,
+	[Recipe.GetItemTypes.StartFire],
+	Water,
+	keep HCClaycauldron/HCCauldroniron,
+	CanBeDoneFromFloor:true,
+	Result:HCWoodgluejar,
+	NeedToBeLearn:true,
+	Time:50,
+	Category:Chemistry,
+	OnGiveXP:HCCooking_OnGiveXP,
+}
 
 recipe Make Super Glue
-    	{
-    		HCBonepowder=10,
-		HCGlycerin,
-		HCGumstick/HCGumstick2/HCGumstick3,
-    		Charcoal,
-    		[Recipe.GetItemTypes.StartFire],
-    		Water,
-    		keep HCClaycauldron/HCCauldroniron,
-    		CanBeDoneFromFloor:true,
-    		Result:HCSuperglue,
-    		NeedToBeLearn:true,
-    		Time:50,
-    		Category:Chemistry,
-   	 	OnGiveXP:HCCooking_OnGiveXP,
-    	}
+{
+	HCBonepowder=10,
+	HCGlycerin,
+	HCGumstick/HCGumstick2/HCGumstick3,
+	Charcoal,
+	[Recipe.GetItemTypes.StartFire],
+	Water,
+	keep HCClaycauldron/HCCauldroniron,
+	CanBeDoneFromFloor:true,
+	Result:HCSuperglue,
+	NeedToBeLearn:true,
+	Time:50,
+	Category:Chemistry,
+	OnGiveXP:HCCooking_OnGiveXP,
+}
 
 recipe Craft Bone Shiv
 	{

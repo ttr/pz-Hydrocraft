@@ -1778,7 +1778,7 @@ module Hydrocraft
 	{
 		keep [Recipe.GetItemTypes.Saw],
 		Plank=3,
-		Woodglue/HCWoodgluejar/Glue/HCGluejar,
+		[Recipe.GetItemTypes.Glue]=4,
 		Twine/DuctTape,
 		SkillRequired:Woodwork=1,
 		Result:HCHomemadebatcrude,
@@ -2080,7 +2080,7 @@ module Hydrocraft
 	{
 		keep [Recipe.GetItemTypes.Saw],
 		Plank=2,
-		Woodglue/HCWoodgluejar/Glue/HCGluejar,
+		[Recipe.GetItemTypes.Glue]=4,
 		Twine/DuctTape,
 		SkillRequired:Woodwork=1,
 		Result:HCHomemadeclubcrude,
