@@ -133,7 +133,7 @@ item HCToothbrushshiv
 	recipe Craft Improvised Scalpel
 	{
 		HCRazorblade,
-    	Glue/HCGluejar,
+    	[Recipe.GetItemTypes.Glue]=3,
 		WoodenStick,				
 		Result:HCScalpelimprovised,
 		Time:100.0,
@@ -144,7 +144,7 @@ item HCToothbrushshiv
 	recipe Craft Razor Gloves
 	{
 		HCRazorblade=3,
-    		Glue/HCGluejar,
+    		[Recipe.GetItemTypes.Glue]=3,
 		Belt,
 		HCRubberglove,
 		WoodenStick,				

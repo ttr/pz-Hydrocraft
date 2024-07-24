@@ -1926,11 +1926,8 @@ recipe Play With
 recipe Make Pinata
 	{
 	Notebook,
-	Glue/HCGluejar,
-	Glue/HCGluejar,
-	Glue/HCGluejar,
-	Glue/HCGluejar,
-	Glue/HCGluejar,
+	[Recipe.GetItemTypes.Glue],
+	[Recipe.GetItemTypes.Glue],
 	HCCrayonbox,
 	HCCandymixed,
 	Result:HCPinata,

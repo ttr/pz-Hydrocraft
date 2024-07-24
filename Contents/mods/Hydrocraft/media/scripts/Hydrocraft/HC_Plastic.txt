@@ -65,7 +65,7 @@ recipe Recycle Plastic Can
 
 recipe Make Plastic Case
     {
-    	Glue/HCGluejar,
+    	[Recipe.GetItemTypes.Glue]=3,
 		keep HCBoxcutter/[Recipe.GetItemTypes.DullKnife]/[Recipe.GetItemTypes.SharpKnife]/[Recipe.GetItemTypes.Scissors],
         HCPlastic=6,
     	Result:HCSelfmadeplasticcase,

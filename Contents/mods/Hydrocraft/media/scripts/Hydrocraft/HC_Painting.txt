@@ -320,8 +320,7 @@ recipe Extract Blue Pigment
 recipe Mix Can of Pink Paint
     {
     HCPaintcan,
-    Glue/HCGluejar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=5,
     Water=2,
     HCRedpigment,
     HCWhitepigment,
@@ -336,8 +335,8 @@ recipe Mix Can of Pink Paint
 recipe Mix Can of Red Paint
     {
     HCPaintcan,
-    Glue/HCGluejar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=5,
+
     Water=2,
     HCRedpigment=2,
     keep HCLab2/HCLabbig2,
@@ -351,8 +350,7 @@ recipe Mix Can of Red Paint
 recipe Mix Can of Orange Paint
     {
     HCPaintcan,
-    Glue/HCGluejar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=5,
     Water=2,
     HCRedpigment,
     HCYellowpigment,
@@ -367,8 +365,7 @@ recipe Mix Can of Orange Paint
 recipe Mix Can of Brown Paint
     {
     HCPaintcan,
-    Glue/HCGluejar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=5,
     Water=2,
     HCBrownpigment=2,
     keep HCLab2/HCLabbig2,
@@ -382,8 +379,7 @@ recipe Mix Can of Brown Paint
 recipe Mix Can of Light Brown Paint
     {
     HCPaintcan,
-    Glue/HCGluejar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=5,
     Water=2,
     HCWhitepigment,
     HCBrownpigment,
@@ -398,8 +394,7 @@ recipe Mix Can of Light Brown Paint
 recipe Mix Can of Yellow Paint
     {
     HCPaintcan,
-    Glue/HCGluejar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=5,
     Water=2,
     HCYellowpigment=2,
     keep HCLab2/HCLabbig2,
@@ -413,8 +408,7 @@ recipe Mix Can of Yellow Paint
 recipe Mix Can of Green Paint
     {
     HCPaintcan,
-    Glue/HCGluejar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=5,
     Water=2,
     HCGreenpigment=2,
     keep HCLab2/HCLabbig2,
@@ -428,8 +422,7 @@ recipe Mix Can of Green Paint
 recipe Mix Can of Turquoise Paint
     {
     HCPaintcan,
-    Glue/HCGluejar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=5,
     Water=2,
     HCGreenpigment,
     HCBluepigment,
@@ -444,8 +437,7 @@ recipe Mix Can of Turquoise Paint
 recipe Mix Can of Cyan Paint
     {
     HCPaintcan,
-    Glue/HCGluejar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=5,
     Water=2,
     HCGreenpigment,
     HCBluepigment,
@@ -460,8 +452,7 @@ recipe Mix Can of Cyan Paint
 recipe Mix Can of Light Blue Paint
     {
     HCPaintcan,
-    Glue/HCGluejar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=5,
     Water=2,
     HCWhitepigment,
     HCBluepigment,
@@ -476,8 +467,7 @@ recipe Mix Can of Light Blue Paint
 recipe Mix Can of Blue Paint
     {
     HCPaintcan,
-    Glue/HCGluejar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=5,
     Water=2,
     HCBluepigment=2,
     keep HCLab2/HCLabbig2,
@@ -491,8 +481,7 @@ recipe Mix Can of Blue Paint
 recipe Mix Can of Purple Paint
     {
     HCPaintcan,
-    Glue/HCGluejar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=5,
     Water=2,
     HCRedpigment,
     HCBluepigment,
@@ -507,8 +496,7 @@ recipe Mix Can of Purple Paint
 recipe Mix Can of Black Paint
     {
     HCPaintcan,
-    Glue/HCGluejar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=5,
     Water=2,
     HCCharcoalpowder=2,
     keep HCLab2/HCLabbig2,
@@ -522,8 +510,7 @@ recipe Mix Can of Black Paint
 recipe Mix Can of Grey Paint
     {
     HCPaintcan,
-    Glue/HCGluejar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=5,
     Water=2,
     HCWhitepigment,
     HCCharcoalpowder,
@@ -538,8 +525,7 @@ recipe Mix Can of Grey Paint
 recipe Mix Can of White Paint
     {
     HCPaintcan,
-    Glue/HCGluejar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=5,
     Water=2,
     HCWhitepigment=2,
     keep HCLab2/HCLabbig2,
@@ -554,7 +540,7 @@ recipe Mix Jar of White Paint
     {
     HCJar,
     HCPaintcan,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=3,
     Water,
     HCWhitepigment,
     keep HCLab2/HCLabbig2,
@@ -568,7 +554,7 @@ recipe Mix Jar of White Paint
 recipe Mix Jar of Yellow Paint
     {
     HCJar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=3,
     Water,
     HCYellowpigment,
     keep HCLab2/HCLabbig2,
@@ -582,7 +568,7 @@ recipe Mix Jar of Yellow Paint
 recipe Mix Jar of Red Paint
     {
     HCJar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=3,
     Water,
     HCRedpigment,
     keep HCLab2/HCLabbig2,
@@ -596,7 +582,7 @@ recipe Mix Jar of Red Paint
 recipe Mix Jar of Blue Paint
     {
     HCJar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=3,
     Water,
     HCBluepigment,
     keep HCLab2/HCLabbig2,
@@ -610,7 +596,7 @@ recipe Mix Jar of Blue Paint
 recipe Mix Jar of Black Paint
     {
     HCJar,
-    Glue/HCGluejar,
+    [Recipe.GetItemTypes.Glue]=3,
     Water,
     HCCharcoalpowder,
     keep HCLab2/HCLabbig2,

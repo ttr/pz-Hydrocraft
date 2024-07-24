@@ -1632,7 +1632,7 @@ recipe Make Wooden Wheel
         Category:Carpentry,
         OnGiveXP:HCWoodwork_OnGiveXP,
     }
-	recipe Make Wooden Wheel
+	recipe Make Wooden Wheel (jar)
     {
         HCWoodenring,
         HCWoodgluejar=6,

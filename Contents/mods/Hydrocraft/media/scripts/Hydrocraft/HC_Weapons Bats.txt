@@ -1879,15 +1879,12 @@ module Hydrocraft
 		keep [Recipe.GetItemTypes.Saw],
 		Plank=3,
 		Woodglue/HCWoodgluejar,
-		Woodglue/HCWoodgluejar,
-		Woodglue/HCWoodgluejar,
 		DuctTape=2,
-		
 		SkillRequired:Woodwork=4,
 		Result:HCHomemadebat,
 		Time:500.0,
-    	   	Category:Carpentry,
-    	   	OnGiveXP:HCWoodwork_OnGiveXP,
+  	   	Category:Carpentry,
+  	   	OnGiveXP:HCWoodwork_OnGiveXP,
 	}	
 
 	recipe Craft Nailed Homemade Bat
@@ -2177,7 +2174,6 @@ module Hydrocraft
 		SkillRequired:Woodwork=4,
 		keep [Recipe.GetItemTypes.Saw],
 		Plank=2,
-		Woodglue/HCWoodgluejar,
 		Woodglue/HCWoodgluejar,
 		DuctTape=2,
 		Result:HCHomemadeclub,
