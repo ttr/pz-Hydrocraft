@@ -125,42 +125,6 @@ item HCCookiesbrowniebagtrash
 		DisplayCategory 		= 	Trash,
 	}
 
-item HCRamenchickentrash
-    	{
-        	Weight    			= 	0.02,
-        	Type    			= 	Normal,
-        	DisplayName     		= 	Plastic Packaging,
-        	icon 				= 	HCRamenchickentrash,
-		DisplayCategory 		= 	Trash,
-    	}  
-
-item HCRamenbeeftrash
-    	{
-        	Weight    			= 	0.02,
-        	Type    			= 	Normal,
-        	DisplayName     		= 	Plastic Packaging,
-        	icon 				= 	HCRamenchickentrash,
-		DisplayCategory 		= 	Trash,
-    	}  
-
-item HCRamenshrimptrash
-    	{
-        	Weight    			= 	0.02,
-        	Type    			= 	Normal,
-        	DisplayName     		= 	Plastic Packaging,
-        	icon 				= 	HCRamenchickentrash,
-		DisplayCategory 		= 	Trash,
-    	}  
-
-item HCRamencheesetrash
-    	{
-        	Weight    			= 	0.02,
-        	Type    			= 	Normal,
-        	DisplayName     		= 	Plastic Packaging,
-        	icon 				= 	HCRamenchickentrash,
-		DisplayCategory 		= 	Trash,
-    	}
-
 item HCChocolatetrash
 	{
 		Weight				=	0.01,
