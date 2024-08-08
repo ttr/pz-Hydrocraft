@@ -1,0 +1,25 @@
+Wpn:
+remove all spear variants
+rebalance all polearms one
+
+*:
+clean up solar
+remove genrators from all recipes (like PC) and add energy dependence
+remove steel pipes/bars as those one are in vanilla (metal bar/pipe is steel)
+create drying mechanism (timed, temp/weather deended) and move skins drying from recipe to that. Add drying grass to straw before creating twine.
+
+
+Boneworking:
+remove zombie bones on mining and replace it with random animal bones
+add ability to harvest bones from corpes (+integrate wuth corpse study mod)
+
+Mining: 
+Create geology map, possibly based on persitant game seed.
+Basedo on that create some mining zones for all ores and allocate probablity based on XY of map.
+Will need to have way of providing feedback (reading geology book would give notes with zones coordinates?)
+As result players will need to plan mine locations.
+
+Constructions:
+migrate all constructions (like mine/smithy) from anchoring to construction, same as klin/bench.
+
+
