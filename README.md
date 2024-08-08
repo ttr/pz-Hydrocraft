@@ -5,12 +5,6 @@
 * Maintainers of other HC versions - feel free to re-use it but better will be if we do consolidate this into one maintained mod.
 
 # Notes.
-## see Todo for what is planned (rough ideas)
+## on ttrs branch - see Todo for what is planned (rough ideas)
+## on ttrs branch - see changed.txt for changes
 ## occasionally maintained
-## Changed:
-* removed solar stuff (not fully) - use ISA mod for this
-* removed rammen items - use Rammen Mod
-* changed some polearms values to be aligned with vanilla
-* changed mining to remove arrowheads/bones/trash (or limit them)
-
-
